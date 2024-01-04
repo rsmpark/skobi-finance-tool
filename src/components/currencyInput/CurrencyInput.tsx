@@ -9,7 +9,7 @@ import { createNumberMask } from "text-mask-addons";
 import { CurrnecyInputProps } from "./CurrencyInput.types";
 
 const defaultMaskOptions = {
-  prefix: "$",
+  prefix: "",
   suffix: "",
   includeThousandsSeparator: true,
   thousandsSeparatorSymbol: ",",
