@@ -50,7 +50,7 @@ const CurrencyInput: FC<CurrnecyInputProps> = ({ maskOptions, setValue, ...props
   });
 
   return (
-    <>
+    <div>
       <MuiTypography variant="subtitle2" gutterBottom>
         {props.label}
       </MuiTypography>
@@ -65,7 +65,7 @@ const CurrencyInput: FC<CurrnecyInputProps> = ({ maskOptions, setValue, ...props
           return <MuiInput mask={false} ref={ref} {...props} />;
         }}
       />
-    </>
+    </div>
   );
 };
 

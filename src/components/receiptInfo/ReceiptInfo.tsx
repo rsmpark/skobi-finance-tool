@@ -1,4 +1,4 @@
-import MuiBox from "@mui/material/Box";
+import MuiPaper from "@mui/material/Paper";
 import MuiStack from "@mui/material/Stack";
 import { useState } from "react";
 
@@ -12,8 +12,12 @@ const ReceiptInfo = () => {
   const [giftCard, setGiftCard] = useState<string>("");
 
   return (
-    <MuiStack>
-      <MuiBox sx={{ display: "flex", flexWrap: "wrap" }}>
+    <MuiPaper
+      component="form"
+      elevation={1}
+      sx={{ maxWidth: 800, padding: 4, borderRadius: 4 }}
+    >
+      <MuiStack spacing={4}>
         <CurrencyInput
           label="Sales Report Total"
           name="srt"
@@ -34,8 +38,8 @@ const ReceiptInfo = () => {
           value={giftCard}
           setValue={setGiftCard}
         />
-      </MuiBox>
-    </MuiStack>
+      </MuiStack>
+    </MuiPaper>
   );
 };
 
