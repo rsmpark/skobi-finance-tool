@@ -18,9 +18,7 @@ const ReceiptInfo = () => {
           label="Sales Report Total"
           name="srt"
           value={salesReportTotal}
-          setValue={(value) => {
-            setSalesReportTotal(value);
-          }}
+          setValue={setSalesReportTotal}
         />
       </MuiBox>
     </MuiStack>
