@@ -3,6 +3,7 @@ import MuiStack from "@mui/material/Stack";
 import { useState } from "react";
 
 import CurrencyInput from "../currencyInput/CurrencyInput";
+import TipSummary from "../tipSummary/TipSummary";
 
 const ReceiptInfo = () => {
   const [salesReportTotal, setSalesReportTotal] = useState<string>("");
@@ -17,27 +18,30 @@ const ReceiptInfo = () => {
       elevation={1}
       sx={{ maxWidth: 800, padding: 4, borderRadius: 4 }}
     >
-      <MuiStack spacing={4}>
-        <CurrencyInput
-          label="Sales Report Total"
-          name="srt"
-          value={salesReportTotal}
-          setValue={setSalesReportTotal}
-        />
-        <CurrencyInput
-          label="Net Sales"
-          name="net-sales"
-          value={netSales}
-          setValue={setNetSales}
-        />
-        <CurrencyInput label="Tips" name="tips" value={tips} setValue={setTips} />
-        <CurrencyInput label="Cash" name="cash" value={cash} setValue={setCash} />
-        <CurrencyInput
-          label="Gift Card"
-          name="gift-card"
-          value={giftCard}
-          setValue={setGiftCard}
-        />
+      <MuiStack direction={{ xs: "column", md: "row" }} spacing={5}>
+        <MuiStack spacing={4} sx={{ width: "100%" }}>
+          <CurrencyInput
+            label="Sales Report Total"
+            name="srt"
+            value={salesReportTotal}
+            setValue={setSalesReportTotal}
+          />
+          <CurrencyInput
+            label="Net Sales"
+            name="net-sales"
+            value={netSales}
+            setValue={setNetSales}
+          />
+          <CurrencyInput label="Tips" name="tips" value={tips} setValue={setTips} />
+          <CurrencyInput label="Cash" name="cash" value={cash} setValue={setCash} />
+          <CurrencyInput
+            label="Gift Card"
+            name="gift-card"
+            value={giftCard}
+            setValue={setGiftCard}
+          />
+        </MuiStack>
+        <TipSummary />
       </MuiStack>
     </MuiPaper>
   );
