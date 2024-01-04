@@ -9,7 +9,7 @@ const ReceiptInfo = () => {
   const [netSales, setNetSales] = useState<string>("");
   const [tips, setTips] = useState<string>("");
   const [cash, setCash] = useState<string>("");
-  const [giftCardAmt, setGiftCardAmt] = useState<string>("");
+  const [giftCard, setGiftCard] = useState<string>("");
 
   return (
     <MuiStack>
@@ -19,6 +19,20 @@ const ReceiptInfo = () => {
           name="srt"
           value={salesReportTotal}
           setValue={setSalesReportTotal}
+        />
+        <CurrencyInput
+          label="Net Sales"
+          name="net-sales"
+          value={netSales}
+          setValue={setNetSales}
+        />
+        <CurrencyInput label="Tips" name="tips" value={tips} setValue={setTips} />
+        <CurrencyInput label="Cash" name="cash" value={cash} setValue={setCash} />
+        <CurrencyInput
+          label="Gift Card"
+          name="gift-card"
+          value={giftCard}
+          setValue={setGiftCard}
         />
       </MuiBox>
     </MuiStack>
