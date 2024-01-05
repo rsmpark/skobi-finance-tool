@@ -100,16 +100,23 @@ const theme = createTheme({
         root: {
           fontFamily: "Space Mono",
           fontSize: 18,
-          color: Colors.Very_dark_cyan,
+          color: "Colors.Very_dark_cyan",
           backgroundColor: Colors.Very_light_grayish_cyan,
-
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "lightgray",
+            borderWidth: "2px",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderWidth: "2px",
+            borderColor: Colors.Strong_cyan,
+          },
           "&:focus": {
             border: "10px solid red",
           },
         },
 
         notchedOutline: {
-          borderColor: "transparent",
+          borderColor: "lightgray",
         },
       },
     },
