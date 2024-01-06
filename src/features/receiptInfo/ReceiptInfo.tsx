@@ -41,7 +41,7 @@ const ReceiptInfo = () => {
             setValue={setGiftCard}
           />
         </MuiStack>
-        <TipSummary />
+        <TipSummary receiptInfo={{ salesReportTotal, netSales, tips, cash, giftCard }} />
       </MuiStack>
     </MuiPaper>
   );
