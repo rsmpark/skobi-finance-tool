@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
+import tipSummarySlice from "../features/tipSummary/slice/tipSummary.slice";
+
 export const store = configureStore({
-  // TODO: Add reducers here
-  reducer: {},
+  reducer: {
+    tipSummary: tipSummarySlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
