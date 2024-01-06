@@ -12,14 +12,14 @@ interface TipSummaryState {
   owner: number;
   totalTip: number;
   kitchenTip: number;
-  hallTips: number;
+  hallTip: number;
 }
 
 const initialState: TipSummaryState = {
   owner: 0,
   totalTip: 0,
   kitchenTip: 0,
-  hallTips: 0,
+  hallTip: 0,
 };
 
 const tipSummarySlice = createSlice({
@@ -32,7 +32,7 @@ const tipSummarySlice = createSlice({
       state.owner = calculateOwner(salesReportTotal, netSales);
       state.totalTip = calculateTotalTip(tips, cash, giftCard);
       state.kitchenTip = calculateKitchenTip(Math.floor(state.totalTip));
-      state.hallTips = calculateHallTip(state.totalTip, Math.ceil(state.kitchenTip));
+      state.hallTip = calculateHallTip(state.totalTip, Math.ceil(state.kitchenTip));
     },
   },
 });
