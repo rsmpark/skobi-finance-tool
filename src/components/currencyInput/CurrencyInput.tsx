@@ -1,9 +1,9 @@
 import MuiAttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 import MuiInputAdornment from "@mui/material/InputAdornment";
-import MuiTextField from "@mui/material/TextField";
+import MuiTextField, { StandardTextFieldProps } from "@mui/material/TextField";
 import MuiTypography from "@mui/material/Typography";
 import { ChangeEvent, FC, forwardRef } from "react";
-import MaskedInput, { MaskedInputProps } from "react-text-mask";
+import MaskedInput from "react-text-mask";
 import { createNumberMask } from "text-mask-addons";
 
 import { CurrnecyInputProps } from "./CurrencyInput.types";
@@ -20,28 +20,30 @@ const defaultMaskOptions = {
   allowLeadingZeroes: false,
 };
 
-const MuiInput = forwardRef(({ name, placeholder, onChange }: MaskedInputProps, ref) => {
-  return (
-    <MuiTextField
-      inputRef={ref}
-      name={name}
-      size="small"
-      placeholder={placeholder}
-      fullWidth
-      sx={{
-        input: { textAlign: "right" },
-      }}
-      onChange={onChange}
-      InputProps={{
-        startAdornment: (
-          <MuiInputAdornment position="start">
-            <MuiAttachMoneyRoundedIcon sx={{ color: "hsl(184, 14%, 56%)" }} />
-          </MuiInputAdornment>
-        ),
-      }}
-    />
-  );
-});
+const MuiInput = forwardRef(
+  ({ name, placeholder, onChange }: StandardTextFieldProps, ref) => {
+    return (
+      <MuiTextField
+        inputRef={ref}
+        name={name}
+        size="small"
+        placeholder={placeholder}
+        fullWidth
+        sx={{
+          input: { textAlign: "right" },
+        }}
+        onChange={onChange}
+        InputProps={{
+          startAdornment: (
+            <MuiInputAdornment position="start">
+              <MuiAttachMoneyRoundedIcon sx={{ color: "hsl(184, 14%, 56%)" }} />
+            </MuiInputAdornment>
+          ),
+        }}
+      />
+    );
+  }
+);
 
 const CurrencyInput: FC<CurrnecyInputProps> = ({ maskOptions, setValue, ...props }) => {
   const currencyMask = createNumberMask({
@@ -49,20 +51,22 @@ const CurrencyInput: FC<CurrnecyInputProps> = ({ maskOptions, setValue, ...props
     ...maskOptions,
   });
 
+  const { label, name, ...inputProps } = props;
+
   return (
     <div>
       <MuiTypography variant="subtitle2" gutterBottom>
-        {props.label}
+        {label}
       </MuiTypography>
       <MaskedInput
         mask={currencyMask}
         placeholder="0"
-        id={props.name}
+        id={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value);
         }}
-        render={(ref, props) => {
-          return <MuiInput mask={false} ref={ref} {...props} />;
+        render={(ref, maskInputProps) => {
+          return <MuiInput ref={ref} {...maskInputProps} {...inputProps} />;
         }}
       />
     </div>

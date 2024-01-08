@@ -2,7 +2,7 @@ import MuiPaper from "@mui/material/Paper";
 import MuiStack from "@mui/material/Stack";
 import { useState } from "react";
 
-import CurrencyInput from "../currencyInput/CurrencyInput";
+import CurrencyInput from "../../components/currencyInput/CurrencyInput";
 import TipSummary from "../tipSummary/TipSummary";
 
 const ReceiptInfo = () => {
@@ -41,7 +41,7 @@ const ReceiptInfo = () => {
             setValue={setGiftCard}
           />
         </MuiStack>
-        <TipSummary />
+        <TipSummary receiptInfo={{ salesReportTotal, netSales, tips, cash, giftCard }} />
       </MuiStack>
     </MuiPaper>
   );

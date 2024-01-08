@@ -1,9 +1,9 @@
 import MuiStack from "@mui/material/Stack";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import "./assets/css/fonts.css";
+import "../assets/css/fonts.css";
 
-import ReceiptInfo from "./components/receiptInfo/ReceiptInfo";
-import theme from "./themes/theme";
+import ReceiptInfo from "../features/receiptInfo/ReceiptInfo";
+import theme from "../themes/theme";
 
 export default function App() {
   return (
