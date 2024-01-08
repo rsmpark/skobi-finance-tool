@@ -2,7 +2,13 @@ import MuiBox from "@mui/material/Box";
 import MuiStack from "@mui/material/Stack";
 import MuiTypography from "@mui/material/Typography";
 
+import { useTypedSelector } from "../../../../app/store";
+
 const KitchenTipItem = () => {
+  const value = useTypedSelector((state) => [state.tipSummary.kitchenTip]);
+  const flooredValue = useTypedSelector((state) =>
+    Math.floor(state.tipSummary.kitchenTip)
+  );
   return (
     <MuiStack direction="row" justifyContent="space-between" alignItems={"center"}>
       <MuiBox>
@@ -13,10 +19,10 @@ const KitchenTipItem = () => {
       </MuiBox>
       <MuiBox>
         <MuiTypography variant="h4" color="text.secondary">
-          $1000.90
+          ${value[0]}
         </MuiTypography>
         <MuiTypography variant="body2" color="text.secondary" textAlign="end">
-          $1000
+          ${flooredValue}
         </MuiTypography>
       </MuiBox>
     </MuiStack>

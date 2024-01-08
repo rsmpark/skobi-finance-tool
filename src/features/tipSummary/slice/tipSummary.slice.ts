@@ -30,9 +30,9 @@ const tipSummarySlice = createSlice({
       const { salesReportTotal, netSales, cash, giftCard, tips } = action.payload;
 
       state.owner = calculateOwner(salesReportTotal, netSales);
-      state.totalTip = calculateTotalTip(tips, cash, giftCard);
-      state.kitchenTip = calculateKitchenTip(Math.floor(state.totalTip));
-      state.hallTip = calculateHallTip(state.totalTip, Math.ceil(state.kitchenTip));
+      state.totalTip = calculateTotalTip(state.owner, tips, cash, giftCard);
+      state.kitchenTip = calculateKitchenTip(state.totalTip);
+      state.hallTip = calculateHallTip(state.totalTip, state.kitchenTip);
     },
   },
 });

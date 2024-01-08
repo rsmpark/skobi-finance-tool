@@ -12,9 +12,21 @@ import { ParsedReceiptInfo } from "../receiptInfo/ReceiptInfo.types";
 
 const TipSummary: FC<TipSummaryProps> = ({ receiptInfo }) => {
   const dispatch = useAppDispatch();
-
   const onCalculate = () => {
-    const parsedReceiptInfo = parseObjectValuesToNumber(receiptInfo) as ParsedReceiptInfo;
+    // const parsedReceiptInfo = parseObjectValuesToNumber(
+    //   receiptInfo
+    // ) as ParsedReceiptInfo;
+
+    // Dummy date
+    // TODO: remove dummy data
+    const parsedReceiptInfo = {
+      salesReportTotal: 15769.13,
+      netSales: 14300.47,
+      tips: 2157.85,
+      cash: 1350,
+      giftCard: 0,
+    };
+
     dispatch(calculateTips(parsedReceiptInfo));
   };
 
@@ -32,7 +44,7 @@ const TipSummary: FC<TipSummaryProps> = ({ receiptInfo }) => {
           variant="contained"
           // disabled={!bill && !tip && !people}
           sx={{ color: "primary.dark", bgcolor: "primary.main", flexGrow: 1, mx: 1 }}
-          // onClick={handleReset}
+          onClick={onCalculate}
         >
           Calculate
         </MuiButton>
@@ -41,7 +53,7 @@ const TipSummary: FC<TipSummaryProps> = ({ receiptInfo }) => {
           variant="contained"
           // disabled={!bill && !tip && !people}
           sx={{ color: "primary.dark", bgcolor: "primary.main", mx: 1, px: 3 }}
-          // onClick={handleReset}
+          onClick={() => {}}
         >
           Reset
         </MuiButton>
