@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 
-import { ReceiptInfo } from "../receiptInfo/ReceiptInfo.types";
+import { ReceiptInfoState } from "../receiptInfo/ReceiptInfo.types";
 
 export interface ItemLabelProps {
   label: string;
@@ -12,8 +12,13 @@ export interface ItemResultProps {
   rounded?: boolean;
 }
 
+export interface ActionProps {
+  handleCalculate: () => void;
+  handleReset: () => void;
+}
+
 interface TipSummaryCardProps {
-  receiptInfo: ReceiptInfo;
+  // receiptInfo: ReceiptInfo;
 }
 
 export interface TipSummaryCardComponent
@@ -22,5 +27,5 @@ export interface TipSummaryCardComponent
   ListItem: FC<PropsWithChildren>;
   ItemLabel: FC<ItemLabelProps>;
   ItemResult: FC<ItemResultProps>;
-  Action: FC;
+  Action: FC<ActionProps>;
 }
