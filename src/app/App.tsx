@@ -2,7 +2,7 @@ import MuiStack from "@mui/material/Stack";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import "../assets/css/fonts.css";
 
-import ReceiptInfo from "../features/receiptInfo/ReceiptInfo";
+import TipCalculator from "../components/tipCalculator/TipCalculator";
 import theme from "../themes/theme";
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
           backgroundColor: "background.default",
         }}
       >
-        <ReceiptInfo />
+        <TipCalculator />
       </MuiStack>
     </ThemeProvider>
   );
