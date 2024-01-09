@@ -6,7 +6,7 @@ import OwnerItem from "./items/OwnerItem";
 import TipPercentageItem from "./items/TipPercentageItem";
 import TotalTipItem from "./items/TotalTipItem";
 
-const TipSummaryContent = () => {
+const TipSummaryList = () => {
   return (
     <MuiStack spacing={5}>
       <OwnerItem />
@@ -18,4 +18,4 @@ const TipSummaryContent = () => {
   );
 };
 
-export default TipSummaryContent;
+export default TipSummaryList;

@@ -2,7 +2,7 @@ import MuiBox from "@mui/material/Box";
 import MuiStack from "@mui/material/Stack";
 import MuiTypography from "@mui/material/Typography";
 
-import { useTypedSelector } from "../../../../app/store";
+import { useTypedSelector } from "../../../app/store";
 
 const OwnerItem = () => {
   const value = useTypedSelector((state) => state.tipSummary.owner);
