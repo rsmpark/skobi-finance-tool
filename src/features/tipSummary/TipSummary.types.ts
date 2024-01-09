@@ -8,15 +8,16 @@ export interface ItemLabelProps {
 }
 export interface ItemResultProps {
   value: number;
-  flooredValue: number;
+  flooredValue?: number;
   rounded?: boolean;
 }
 
-interface TipSummaryProps {
+interface TipSummaryCardProps {
   receiptInfo: ReceiptInfo;
 }
 
-export interface TipSummaryComponent extends FC<PropsWithChildren<TipSummaryProps>> {
+export interface TipSummaryCardComponent
+  extends FC<PropsWithChildren<TipSummaryCardProps>> {
   List: FC<PropsWithChildren>;
   ListItem: FC<PropsWithChildren>;
   ItemLabel: FC<ItemLabelProps>;

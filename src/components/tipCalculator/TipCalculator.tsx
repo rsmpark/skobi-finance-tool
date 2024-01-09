@@ -13,18 +13,7 @@ const TipCalculator = () => {
     >
       <MuiStack direction={{ xs: "column", md: "row" }} spacing={5}>
         <ReceiptInfo />
-        {/* TODO: Fix TipSummary Props  */}
-        <TipSummary
-          receiptInfo={{
-            salesReportTotal: "0",
-            netSales: "0",
-            tips: "0",
-            cash: "0",
-            giftCard: "0",
-          }}
-        >
-          <TipSummary.Action />
-        </TipSummary>
+        <TipSummary />
       </MuiStack>
     </MuiPaper>
   );
