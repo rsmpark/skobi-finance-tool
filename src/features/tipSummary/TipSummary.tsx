@@ -1,41 +1,9 @@
-import TipPercentageItem from "../../components/tipSummary/listItem/TipPercentageItem";
-import TipSummaryCard from "../../components/tipSummary/TipSummaryCard";
-
-const OwnerListItem = () => {
-  return (
-    <TipSummaryCard.ListItem>
-      <TipSummaryCard.ItemLabel label="Owner" />
-      <TipSummaryCard.ItemResult value={0} />
-    </TipSummaryCard.ListItem>
-  );
-};
-
-const TotalTipListItem = () => {
-  return (
-    <TipSummaryCard.ListItem>
-      <TipSummaryCard.ItemLabel label="Total Tip" />
-      <TipSummaryCard.ItemResult value={0} />
-    </TipSummaryCard.ListItem>
-  );
-};
-
-const HallTipListItem = () => {
-  return (
-    <TipSummaryCard.ListItem>
-      <TipSummaryCard.ItemLabel label="Hall Tip" />
-      <TipSummaryCard.ItemResult value={0} />
-    </TipSummaryCard.ListItem>
-  );
-};
-
-const KitchenTipListItem = () => {
-  return (
-    <TipSummaryCard.ListItem>
-      <TipSummaryCard.ItemLabel label="Kitchen Tip" />
-      <TipSummaryCard.ItemResult value={0} />
-    </TipSummaryCard.ListItem>
-  );
-};
+import HallTipListItem from "../../components/tipSummaryCard/listItem/HallTipListItem";
+import KitchenTipListItem from "../../components/tipSummaryCard/listItem/KitchenTipListItem";
+import OwnerListItem from "../../components/tipSummaryCard/listItem/OwnerListItem";
+import TipPercentageItem from "../../components/tipSummaryCard/listItem/TipPercentageItem";
+import TotalTipListItem from "../../components/tipSummaryCard/listItem/TotalTipListItem";
+import TipSummaryCard from "../../components/tipSummaryCard/TipSummaryCard";
 
 const TipSummary = () => {
   {
