@@ -1,18 +1,15 @@
-import MuiBox from "@mui/material/Box";
-import MuiButton from "@mui/material/Button";
-import MuiStack from "@mui/material/Stack";
-import { FC } from "react";
-
 import { calculateTips } from "./slice/tipSummary.slice";
-import { TipSummaryProps } from "./TipSummary.types";
-import TipSummaryContent from "./tipSummaryContent/TipSummaryContent";
 import { useAppDispatch } from "../../app/store";
-import { parseObjectValuesToNumber } from "../../util/format.util";
-import { ParsedReceiptInfo } from "../receiptInfo/ReceiptInfo.types";
+import HallTipListItem from "../../components/tipSummaryCard/listItem/HallTipListItem";
+import KitchenTipListItem from "../../components/tipSummaryCard/listItem/KitchenTipListItem";
+import OwnerListItem from "../../components/tipSummaryCard/listItem/OwnerListItem";
+import TipPercentageItem from "../../components/tipSummaryCard/listItem/TipPercentageItem";
+import TotalTipListItem from "../../components/tipSummaryCard/listItem/TotalTipListItem";
+import TipSummaryCard from "../../components/tipSummaryCard/TipSummaryCard";
 
-const TipSummary: FC<TipSummaryProps> = ({ receiptInfo }) => {
+const TipSummary = () => {
   const dispatch = useAppDispatch();
-  const onCalculate = () => {
+  const handleCalculate = () => {
     // const parsedReceiptInfo = parseObjectValuesToNumber(
     //   receiptInfo
     // ) as ParsedReceiptInfo;
@@ -29,36 +26,17 @@ const TipSummary: FC<TipSummaryProps> = ({ receiptInfo }) => {
 
     dispatch(calculateTips(parsedReceiptInfo));
   };
-
   return (
-    <MuiStack
-      spacing={3}
-      justifyContent="space-between"
-      sx={{ p: 4, width: "400px", bgcolor: "primary.dark", borderRadius: 3 }}
-    >
-      <TipSummaryContent />
-
-      <MuiBox display="flex" justifyContent="space-between">
-        <MuiButton
-          type="reset"
-          variant="contained"
-          // disabled={!bill && !tip && !people}
-          sx={{ color: "primary.dark", bgcolor: "primary.main", flexGrow: 1, mx: 1 }}
-          onClick={onCalculate}
-        >
-          Calculate
-        </MuiButton>
-        <MuiButton
-          type="reset"
-          variant="contained"
-          // disabled={!bill && !tip && !people}
-          sx={{ color: "primary.dark", bgcolor: "primary.main", mx: 1, px: 3 }}
-          onClick={() => {}}
-        >
-          Reset
-        </MuiButton>
-      </MuiBox>
-    </MuiStack>
+    <TipSummaryCard>
+      <TipSummaryCard.List>
+        <OwnerListItem />
+        <TotalTipListItem />
+        <HallTipListItem />
+        <KitchenTipListItem />
+        <TipPercentageItem />
+      </TipSummaryCard.List>
+      <TipSummaryCard.Action handleCalculate={handleCalculate} handleReset={() => {}} />
+    </TipSummaryCard>
   );
 };
 
