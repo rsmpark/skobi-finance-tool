@@ -11,7 +11,7 @@ import {
 } from "../tipSummary/slice/tipSummary.slice";
 
 const ReceiptInfo = () => {
-  const { state, inputDispatch, storeDispatch } = useReceiptInfo();
+  const { state, dispatch } = useReceiptInfo();
   const { salesReportTotal, netSales, tips, cash, giftCard } = state;
 
   return (
@@ -20,62 +20,55 @@ const ReceiptInfo = () => {
         label="Sales Report Total"
         name="srt"
         value={salesReportTotal}
-        setValue={(value) =>
-          inputDispatch({ type: "SET_SALES_REPORT_TOTAL", payload: value })
-        }
+        setValue={(value) => dispatch(updateSalesReportTotal(value))}
         onBlur={() => {
           if (!salesReportTotal) {
-            inputDispatch({ type: "SET_SALES_REPORT_TOTAL", payload: "0" });
+            dispatch(updateSalesReportTotal("0"));
           }
-          storeDispatch(updateSalesReportTotal(salesReportTotal || "0"));
         }}
       />
       <CurrencyInput
         label="Net Sales"
         name="net-sales"
         value={netSales}
-        setValue={(value) => inputDispatch({ type: "SET_NET_SALES", payload: value })}
+        setValue={(value) => dispatch(updateNetSales(value))}
         onBlur={() => {
           if (!netSales) {
-            inputDispatch({ type: "SET_NET_SALES", payload: "0" });
+            dispatch(updateNetSales("0"));
           }
-          storeDispatch(updateNetSales(netSales));
         }}
       />
       <CurrencyInput
         label="Tips"
         name="tips"
         value={tips}
-        setValue={(value) => inputDispatch({ type: "SET_TIPS", payload: value })}
+        setValue={(value) => dispatch(updateTips(value))}
         onBlur={() => {
           if (!tips) {
-            inputDispatch({ type: "SET_TIPS", payload: "0" });
+            dispatch(updateTips("0"));
           }
-          storeDispatch(updateTips(tips));
         }}
       />
       <CurrencyInput
         label="Cash"
         name="cash"
         value={cash}
-        setValue={(value) => inputDispatch({ type: "SET_CASH", payload: value })}
+        setValue={(value) => dispatch(updateCash(value))}
         onBlur={() => {
           if (!cash) {
-            inputDispatch({ type: "SET_CASH", payload: "0" });
+            dispatch(updateCash("0"));
           }
-          storeDispatch(updateCash(cash));
         }}
       />
       <CurrencyInput
         label="Gift Card"
         name="gift-card"
         value={giftCard}
-        setValue={(value) => inputDispatch({ type: "SET_GIFT_CARD", payload: value })}
+        setValue={(value) => dispatch(updateGiftCard(value))}
         onBlur={() => {
           if (!giftCard) {
-            inputDispatch({ type: "SET_GIFT_CARD", payload: "0" });
+            dispatch(updateGiftCard("0"));
           }
-          storeDispatch(updateGiftCard(giftCard));
         }}
       />
     </MuiStack>
