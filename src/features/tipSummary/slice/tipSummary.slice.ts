@@ -62,6 +62,19 @@ const tipSummarySlice = createSlice({
     updateGiftCard: (state, action: PayloadAction<string>) => {
       state.receiptInfo.giftCard = action.payload;
     },
+    reset(state) {
+      state.owner = 0;
+      state.totalTip = 0;
+      state.kitchenTip = 0;
+      state.hallTip = 0;
+      state.receiptInfo = {
+        salesReportTotal: "",
+        netSales: "",
+        tips: "",
+        cash: "",
+        giftCard: "",
+      };
+    },
   },
 });
 
@@ -72,6 +85,7 @@ export const {
   updateTips,
   updateCash,
   updateGiftCard,
+  reset,
 } = tipSummarySlice.actions;
 
 export default tipSummarySlice.reducer;
