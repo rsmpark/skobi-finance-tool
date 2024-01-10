@@ -26,7 +26,6 @@ const MuiInput = forwardRef(
     { name, placeholder, onChange, onBlur, onFocus, value }: StandardTextFieldProps,
     ref
   ) => {
-    console.log("🚀 ~ value:", value);
     return (
       <MuiTextField
         inputRef={ref}

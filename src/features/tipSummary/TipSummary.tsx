@@ -10,22 +10,9 @@ import TipSummaryCard from "../../components/tipSummaryCard/TipSummaryCard";
 const TipSummary = () => {
   const dispatch = useAppDispatch();
   const handleCalculate = () => {
-    // const parsedReceiptInfo = parseObjectValuesToNumber(
-    //   receiptInfo
-    // ) as ParsedReceiptInfo;
-
-    // Dummy date
-    // TODO: remove dummy data
-    const parsedReceiptInfo = {
-      salesReportTotal: 15769.13,
-      netSales: 14300.47,
-      tips: 2157.85,
-      cash: 1350,
-      giftCard: 0,
-    };
-
-    dispatch(calculateTips(parsedReceiptInfo));
+    dispatch(calculateTips());
   };
+
   return (
     <TipSummaryCard>
       <TipSummaryCard.List>
