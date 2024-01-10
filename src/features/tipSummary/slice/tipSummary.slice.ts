@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import {
-  parseObjectValuesToNumber,
-  parseStringToNumber,
-} from "../../../util/format.util";
+import { parseObjectValuesToNumber } from "../../../util/format.util";
 import {
   calculateHallTip,
   calculateKitchenTip,
