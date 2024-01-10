@@ -16,7 +16,7 @@ export const parseObjectValuesToNumber = (
   for (const key in obj) {
     const parsedNumber = parseStringToNumber(obj[key]);
 
-    if (parsedNumber) {
+    if (parsedNumber !== null) {
       newObj[key] = parsedNumber;
     }
   }
