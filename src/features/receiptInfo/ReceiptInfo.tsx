@@ -8,7 +8,7 @@ import {
   updateNetSales,
   updateSalesReportTotal,
   updateTips,
-} from "../tipSummary/slice/tipSummary.slice";
+} from "../tipSummary/state/tipSummary.slice";
 
 const ReceiptInfo = () => {
   const { state, dispatch } = useReceiptInfo();

@@ -1,4 +1,4 @@
-import { calculateTips, reset } from "./slice/tipSummary.slice";
+import { calculateTips, reset } from "./state/tipSummary.slice";
 import { useAppDispatch } from "../../app/store";
 import HallTipListItem from "../../components/tipSummaryCard/listItem/HallTipListItem";
 import KitchenTipListItem from "../../components/tipSummaryCard/listItem/KitchenTipListItem";

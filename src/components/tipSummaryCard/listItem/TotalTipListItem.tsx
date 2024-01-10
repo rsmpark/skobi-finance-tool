@@ -1,8 +1,9 @@
 import { useTypedSelector } from "../../../app/store";
+import { selectTotalTip } from "../../../features/tipSummary/state/tipSummary.selectors";
 import TipSummaryCard from "../TipSummaryCard";
 
 const TotalTipListItem = () => {
-  const value = useTypedSelector((state) => state.tipSummary.totalTip);
+  const value = useTypedSelector(selectTotalTip);
   return (
     <TipSummaryCard.ListItem>
       <TipSummaryCard.ItemLabel label="Total Tip" />

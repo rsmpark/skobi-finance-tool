@@ -1,9 +1,10 @@
 import { useTypedSelector } from "../../../app/store";
+import { selectKitchenTip } from "../../../features/tipSummary/state/tipSummary.selectors";
 import { floorToDigit } from "../../../util/format.util";
 import TipSummaryCard from "../TipSummaryCard";
 
 const KitchenTipListItem = () => {
-  const value = useTypedSelector((state) => state.tipSummary.kitchenTip);
+  const value = useTypedSelector(selectKitchenTip);
   // TODO: use floored value
   const flooredValue = floorToDigit(value, 10);
 
