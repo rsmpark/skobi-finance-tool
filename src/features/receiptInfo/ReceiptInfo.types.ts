@@ -11,28 +11,6 @@ export interface ReceiptInfoState {
   giftCard: string;
 }
 
-export type ActionType =
-  | {
-      type: "SET_SALES_REPORT_TOTAL";
-      payload: string;
-    }
-  | {
-      type: "SET_NET_SALES";
-      payload: string;
-    }
-  | {
-      type: "SET_TIPS";
-      payload: string;
-    }
-  | {
-      type: "SET_CASH";
-      payload: string;
-    }
-  | {
-      type: "SET_GIFT_CARD";
-      payload: string;
-    };
-
 export interface ReceiptInfoProps {
   receiptInfo: ReceiptInfoState;
   handleSetReceiptInfo: (e: React.ChangeEvent<HTMLInputElement>) => void;

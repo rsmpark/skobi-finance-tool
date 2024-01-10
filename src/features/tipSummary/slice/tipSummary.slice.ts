@@ -1,20 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { parseStringToNumber } from "../../../util/format.util";
+import {
+  parseObjectValuesToNumber,
+  parseStringToNumber,
+} from "../../../util/format.util";
 import {
   calculateHallTip,
   calculateKitchenTip,
   calculateOwner,
   calculateTotalTip,
 } from "../../../util/tip.util";
-import { ParsedReceiptInfo } from "../../receiptInfo/ReceiptInfo.types";
+import { ReceiptInfoState } from "../../receiptInfo/ReceiptInfo.types";
 
 interface TipSummaryState {
   owner: number;
   totalTip: number;
   kitchenTip: number;
   hallTip: number;
-  receiptInfo: ParsedReceiptInfo;
+  receiptInfo: ReceiptInfoState;
 }
 
 const initialState: TipSummaryState = {
@@ -23,11 +26,11 @@ const initialState: TipSummaryState = {
   kitchenTip: 0,
   hallTip: 0,
   receiptInfo: {
-    salesReportTotal: 0,
-    netSales: 0,
-    tips: 0,
-    cash: 0,
-    giftCard: 0,
+    salesReportTotal: "",
+    netSales: "",
+    tips: "",
+    cash: "",
+    giftCard: "",
   },
 };
 
@@ -36,7 +39,8 @@ const tipSummarySlice = createSlice({
   initialState,
   reducers: {
     calculateTips: (state) => {
-      const { salesReportTotal, netSales, cash, giftCard, tips } = state.receiptInfo;
+      const { salesReportTotal, netSales, cash, giftCard, tips } =
+        parseObjectValuesToNumber(state.receiptInfo);
 
       state.owner = calculateOwner(salesReportTotal, netSales);
       state.totalTip = calculateTotalTip(state.owner, tips, cash, giftCard);
@@ -44,24 +48,19 @@ const tipSummarySlice = createSlice({
       state.hallTip = calculateHallTip(state.totalTip, state.kitchenTip);
     },
     updateSalesReportTotal: (state, action: PayloadAction<string>) => {
-      const parsedNumber = parseStringToNumber(action.payload);
-      if (parsedNumber !== null) state.receiptInfo.salesReportTotal = parsedNumber;
+      state.receiptInfo.salesReportTotal = action.payload;
     },
     updateNetSales: (state, action: PayloadAction<string>) => {
-      const parsedNumber = parseStringToNumber(action.payload);
-      if (parsedNumber !== null) state.receiptInfo.netSales = parsedNumber;
+      state.receiptInfo.netSales = action.payload;
     },
     updateTips: (state, action: PayloadAction<string>) => {
-      const parsedNumber = parseStringToNumber(action.payload);
-      if (parsedNumber !== null) state.receiptInfo.tips = parsedNumber;
+      state.receiptInfo.tips = action.payload;
     },
     updateCash: (state, action: PayloadAction<string>) => {
-      const parsedNumber = parseStringToNumber(action.payload);
-      if (parsedNumber !== null) state.receiptInfo.cash = parsedNumber;
+      state.receiptInfo.cash = action.payload;
     },
     updateGiftCard: (state, action: PayloadAction<string>) => {
-      const parsedNumber = parseStringToNumber(action.payload);
-      if (parsedNumber !== null) state.receiptInfo.giftCard = parsedNumber;
+      state.receiptInfo.giftCard = action.payload;
     },
   },
 });

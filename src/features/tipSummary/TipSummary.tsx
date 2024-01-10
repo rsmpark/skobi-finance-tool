@@ -22,7 +22,7 @@ const TipSummary = () => {
         <KitchenTipListItem />
         <TipPercentageItem />
       </TipSummaryCard.List>
-      <TipSummaryCard.Action handleCalculate={handleCalculate} handleReset={() => {}} />
+      <TipSummaryCard.Actions handleCalculate={handleCalculate} handleReset={() => {}} />
     </TipSummaryCard>
   );
 };

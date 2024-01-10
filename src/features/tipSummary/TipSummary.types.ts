@@ -10,7 +10,7 @@ export interface ItemResultProps {
   rounded?: boolean;
 }
 
-export interface ActionProps {
+export interface ActionsProps {
   handleCalculate: () => void;
   handleReset: () => void;
 }
@@ -20,5 +20,5 @@ export interface TipSummaryCardComponent extends FC<PropsWithChildren> {
   ListItem: FC<PropsWithChildren>;
   ItemLabel: FC<ItemLabelProps>;
   ItemResult: FC<ItemResultProps>;
-  Action: FC<ActionProps>;
+  Actions: FC<ActionsProps>;
 }

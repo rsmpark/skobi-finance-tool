@@ -5,7 +5,7 @@ import MuiTypography from "@mui/material/Typography";
 import { FC, PropsWithChildren } from "react";
 
 import {
-  ActionProps,
+  ActionsProps,
   ItemLabelProps,
   ItemResultProps,
   TipSummaryCardComponent,
@@ -67,11 +67,11 @@ const ItemResult: FC<ItemResultProps> = ({ value, flooredValue, rounded }) => {
   );
 };
 
-const Action: FC<ActionProps> = ({ handleCalculate, handleReset }) => {
+const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset }) => {
   return (
     <MuiBox display="flex" justifyContent="space-between">
       <MuiButton
-        type="reset"
+        type="button"
         variant="contained"
         // disabled={!bill && !tip && !people}
         sx={{ color: "primary.dark", bgcolor: "primary.main", flexGrow: 1, mx: 1 }}
@@ -96,6 +96,6 @@ TipSummaryCard.List = List;
 TipSummaryCard.ListItem = ListItem;
 TipSummaryCard.ItemLabel = ItemLabel;
 TipSummaryCard.ItemResult = ItemResult;
-TipSummaryCard.Action = Action;
+TipSummaryCard.Actions = Actions;
 
 export default TipSummaryCard;
