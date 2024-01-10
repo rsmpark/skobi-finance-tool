@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 
+import { useAppDispatch } from "../../../app/store";
 import { ActionType, ReceiptInfoState } from "../ReceiptInfo.types";
 
 const initialState = {
@@ -28,11 +29,13 @@ const reducer = (state: ReceiptInfoState, action: ActionType) => {
 };
 
 const useReceiptInfo = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, inputDispatch] = useReducer(reducer, initialState);
+  const storeDispatch = useAppDispatch();
 
   return {
     state,
-    dispatch,
+    inputDispatch,
+    storeDispatch,
   };
 };
 
