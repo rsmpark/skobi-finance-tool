@@ -1,5 +1,6 @@
+import { selectInputsAreEmpty } from "./state/tipSummary.selectors";
 import { calculateTips, reset } from "./state/tipSummary.slice";
-import { useAppDispatch } from "../../app/store";
+import { useAppDispatch, useTypedSelector } from "../../app/store";
 import HallTipListItem from "../../components/tipSummaryCard/listItem/HallTipListItem";
 import KitchenTipListItem from "../../components/tipSummaryCard/listItem/KitchenTipListItem";
 import OwnerListItem from "../../components/tipSummaryCard/listItem/OwnerListItem";
@@ -9,6 +10,8 @@ import TipSummaryCard from "../../components/tipSummaryCard/TipSummaryCard";
 
 const TipSummary = () => {
   const dispatch = useAppDispatch();
+  const emptyInputs = useTypedSelector(selectInputsAreEmpty);
+  console.log("🚀 ~ TipSummary ~ emptyInputs:", emptyInputs);
 
   const handleCalculate = () => {
     dispatch(calculateTips());
@@ -30,6 +33,7 @@ const TipSummary = () => {
       <TipSummaryCard.Actions
         handleCalculate={handleCalculate}
         handleReset={handleReset}
+        disabled={emptyInputs}
       />
     </TipSummaryCard>
   );

@@ -26,7 +26,7 @@ const theme = createTheme({
     text: {
       primary: "hsl(183, 100%, 15%)", // Very dark cyan
       secondary: "hsl(172, 67%, 45%)", // Strong cyan
-      disabled: "hsla(0, 0%, 100%, 0.4)", // White (0.4)
+      disabled: "hsla(0, 0%, 100%, 0.5)", // White (0.4)
     },
     background: {
       paper: "hsl(0, 0%, 100%)", // White
@@ -80,16 +80,16 @@ const theme = createTheme({
           padding: "0.25em 2.75em",
           fontFamily: "Space Mono",
           fontSize: 18,
-          color: "hsl(0, 0%, 100%)",
-          backgroundColor: Colors.Very_dark_cyan,
+          color: Colors.Very_dark_cyan,
+          backgroundColor: Colors.Strong_cyan,
           borderRadius: 6,
           "&:hover": {
             color: Colors.Very_dark_cyan,
             backgroundColor: Colors.Light_grayish_cyan,
           },
-
-          disabled: {
-            backgroundColor: "hsl(183.1,78.7%,23.9%)",
+          "&.Mui-disabled": {
+            color: Colors.Dark_grayish_cyan,
+            backgroundColor: "hsl(183.1,72%,13%)",
           },
         },
       },
