@@ -67,13 +67,13 @@ const ItemResult: FC<ItemResultProps> = ({ value, flooredValue, rounded }) => {
   );
 };
 
-const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset }) => {
+const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset, disabled }) => {
   return (
     <MuiBox display="flex" justifyContent="space-between">
       <MuiButton
         type="button"
         variant="contained"
-        // disabled={!bill && !tip && !people}
+        disabled={disabled}
         sx={{ color: "primary.dark", bgcolor: "primary.main", flexGrow: 1, mx: 1 }}
         onClick={handleCalculate}
       >
@@ -82,7 +82,6 @@ const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset }) => {
       <MuiButton
         type="reset"
         variant="contained"
-        // disabled={!bill && !tip && !people}
         sx={{ color: "primary.dark", bgcolor: "primary.main", mx: 1, px: 3 }}
         onClick={handleReset}
       >

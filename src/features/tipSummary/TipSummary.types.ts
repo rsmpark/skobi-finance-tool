@@ -13,6 +13,7 @@ export interface ItemResultProps {
 export interface ActionsProps {
   handleCalculate: () => void;
   handleReset: () => void;
+  disabled: boolean;
 }
 
 export interface TipSummaryCardComponent extends FC<PropsWithChildren> {
