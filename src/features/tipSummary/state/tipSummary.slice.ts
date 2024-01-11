@@ -71,6 +71,7 @@ const tipSummarySlice = createSlice({
       state.totalTip = 0;
       state.kitchenTip = 0;
       state.hallTip = 0;
+      state.tipPercentage = 0;
       state.receiptInfo = {
         salesReportTotal: "",
         netSales: "",
