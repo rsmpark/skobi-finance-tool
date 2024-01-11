@@ -27,9 +27,14 @@ const List: FC<PropsWithChildren> = ({ children }) => {
   return <MuiStack spacing={5}>{children}</MuiStack>;
 };
 
-const ListItem: FC<PropsWithChildren> = ({ children }) => {
+const ListItem: FC<PropsWithChildren> = ({ children, ...props }) => {
   return (
-    <MuiStack direction="row" justifyContent="space-between" alignItems={"center"}>
+    <MuiStack
+      direction="row"
+      justifyContent="space-between"
+      alignItems={"center"}
+      {...props}
+    >
       {children}
     </MuiStack>
   );

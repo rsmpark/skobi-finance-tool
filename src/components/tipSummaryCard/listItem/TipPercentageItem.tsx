@@ -1,16 +1,17 @@
-import MuiStack from "@mui/material/Stack";
 import MuiTypography from "@mui/material/Typography";
+
+import TipSummaryCard from "../TipSummaryCard";
 
 const TipPercentageItem = () => {
   return (
-    <MuiStack direction="row" justifyContent="center">
-      <MuiTypography variant="h6" color="text.disabled" padding={"0 4px"}>
+    <TipSummaryCard.ListItem direction="row" justifyContent="center">
+      <MuiTypography variant="h6" color="text.disabled" padding={"0 3px"}>
         Tip:
       </MuiTypography>
-      <MuiTypography variant="h6" color="text.disabled" padding={"0 4px"}>
+      <MuiTypography variant="h6" color="text.disabled" padding={"0 3px"}>
         12.5%
       </MuiTypography>
-    </MuiStack>
+    </TipSummaryCard.ListItem>
   );
 };
 
