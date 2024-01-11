@@ -31,11 +31,8 @@ export const calculateTipPercentage = (
 ): number => {
   const parsedSalesReportTotal = parseStringToNumber(salesReportTotal);
 
-  return parseFloat(
-    new BigNumber(floorToDigit(totalTip, 10))
-      .dividedBy(parsedSalesReportTotal)
-      .multipliedBy(100)
-      .toNumber()
-      .toFixed(2)
-  );
+  return new BigNumber(floorToDigit(totalTip, 10))
+    .dividedBy(parsedSalesReportTotal)
+    .multipliedBy(100)
+    .toNumber();
 };
