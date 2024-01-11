@@ -74,7 +74,7 @@ const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset, disabled }) =
         type="button"
         variant="contained"
         disabled={disabled}
-        sx={{ color: "primary.dark", bgcolor: "primary.main", flexGrow: 1, mx: 1 }}
+        sx={{ flexGrow: 1, mx: 1 }}
         onClick={handleCalculate}
       >
         Calculate
@@ -82,7 +82,7 @@ const Actions: FC<ActionsProps> = ({ handleCalculate, handleReset, disabled }) =
       <MuiButton
         type="reset"
         variant="contained"
-        sx={{ color: "primary.dark", bgcolor: "primary.main", mx: 1, px: 3 }}
+        sx={{ mx: 1, px: 3 }}
         onClick={handleReset}
       >
         Reset
