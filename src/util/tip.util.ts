@@ -28,16 +28,14 @@ export const calculateHallTip = (totalTip: number, kitchenTips: number) => {
 export const calculateTipPercentage = (
   totalTip: number,
   salesReportTotal: string
-): string => {
+): number => {
   const parsedSalesReportTotal = parseStringToNumber(salesReportTotal);
 
-  if (parsedSalesReportTotal !== null) {
-    return new BigNumber(floorToDigit(totalTip, 10))
+  return parseFloat(
+    new BigNumber(floorToDigit(totalTip, 10))
       .dividedBy(parsedSalesReportTotal)
       .multipliedBy(100)
       .toNumber()
-      .toFixed(2);
-  }
-
-  return "";
+      .toFixed(2)
+  );
 };

@@ -5,6 +5,7 @@ import {
   calculateHallTip,
   calculateKitchenTip,
   calculateOwner,
+  calculateTipPercentage,
   calculateTotalTip,
 } from "../../../util/tip.util";
 import { ReceiptInfoState } from "../../receiptInfo/ReceiptInfo.types";
@@ -14,6 +15,7 @@ interface TipSummaryState {
   totalTip: number;
   kitchenTip: number;
   hallTip: number;
+  tipPercentage: number;
   receiptInfo: ReceiptInfoState;
 }
 
@@ -22,6 +24,7 @@ const initialState: TipSummaryState = {
   totalTip: 0,
   kitchenTip: 0,
   hallTip: 0,
+  tipPercentage: 0,
   receiptInfo: {
     salesReportTotal: "",
     netSales: "",
@@ -43,6 +46,10 @@ const tipSummarySlice = createSlice({
       state.totalTip = calculateTotalTip(state.owner, tips, cash, giftCard);
       state.kitchenTip = calculateKitchenTip(state.totalTip);
       state.hallTip = calculateHallTip(state.totalTip, state.kitchenTip);
+      state.tipPercentage = calculateTipPercentage(
+        state.totalTip,
+        state.receiptInfo.salesReportTotal
+      );
     },
     updateSalesReportTotal: (state, action: PayloadAction<string>) => {
       state.receiptInfo.salesReportTotal = action.payload;

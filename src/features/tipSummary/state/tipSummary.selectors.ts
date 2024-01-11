@@ -1,5 +1,4 @@
 import { RootState } from "../../../app/store";
-import { calculateTipPercentage } from "../../../util/tip.util";
 
 export const selectOwner = (state: RootState) => state.tipSummary.owner;
 export const selectTotalTip = (state: RootState) => state.tipSummary.totalTip;
@@ -13,8 +12,5 @@ export const selectInputsAreEmpty = (state: RootState) => {
 };
 
 export const selectTipPercentage = (state: RootState) => {
-  return calculateTipPercentage(
-    state.tipSummary.totalTip,
-    state.tipSummary.receiptInfo.salesReportTotal
-  );
+  return state.tipSummary.tipPercentage;
 };
