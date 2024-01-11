@@ -1,12 +1,12 @@
+import { TypographyProps } from "@mui/material";
 import { FC, PropsWithChildren } from "react";
-
-export interface ItemLabelProps {
+export interface ItemLabelProps extends TypographyProps {
   label: string;
   rounded?: boolean;
 }
-export interface ItemResultProps {
+export interface ItemResultProps extends TypographyProps {
   value: number;
-  flooredValue?: number;
+  roundedValue?: number;
   rounded?: boolean;
 }
 

@@ -11,7 +11,6 @@ import TipSummaryCard from "../../components/tipSummaryCard/TipSummaryCard";
 const TipSummary = () => {
   const dispatch = useAppDispatch();
   const emptyInputs = useTypedSelector(selectInputsAreEmpty);
-  console.log("🚀 ~ TipSummary ~ emptyInputs:", emptyInputs);
 
   const handleCalculate = () => {
     dispatch(calculateTips());
