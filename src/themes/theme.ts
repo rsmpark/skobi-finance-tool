@@ -13,6 +13,9 @@ const Colors = {
 };
 
 const theme = createTheme({
+  typography: {
+    body1: { fontSize: (14 / 16) * 19 },
+  },
   palette: {
     mode: "light",
     primary: {
