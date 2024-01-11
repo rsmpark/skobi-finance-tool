@@ -1,16 +1,20 @@
-import MuiStack from "@mui/material/Stack";
 import MuiTypography from "@mui/material/Typography";
 
+import { useTypedSelector } from "../../../app/store";
+import { selectTipPercentage } from "../../../features/tipSummary/state/tipSummary.selectors";
+import TipSummaryCard from "../TipSummaryCard";
+
 const TipPercentageItem = () => {
+  const tipPercentage = useTypedSelector(selectTipPercentage);
   return (
-    <MuiStack direction="row" justifyContent="center">
-      <MuiTypography variant="h6" color="text.disabled" padding={"0 4px"}>
+    <TipSummaryCard.ListItem direction="row" justifyContent="center">
+      <MuiTypography variant="h6" color="text.disabled" padding={"0 3px"}>
         Tip:
       </MuiTypography>
-      <MuiTypography variant="h6" color="text.disabled" padding={"0 4px"}>
-        12.5%
+      <MuiTypography variant="h6" color="text.disabled" padding={"0 3px"}>
+        {tipPercentage}%
       </MuiTypography>
-    </MuiStack>
+    </TipSummaryCard.ListItem>
   );
 };
 

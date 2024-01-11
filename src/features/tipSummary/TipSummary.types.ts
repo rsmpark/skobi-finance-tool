@@ -1,4 +1,5 @@
-import { TypographyProps } from "@mui/material";
+import { StackProps } from "@mui/material/Stack";
+import { TypographyProps } from "@mui/material/Typography";
 import { FC, PropsWithChildren } from "react";
 export interface ItemLabelProps extends TypographyProps {
   label: string;
@@ -18,7 +19,7 @@ export interface ActionsProps {
 
 export interface TipSummaryCardComponent extends FC<PropsWithChildren> {
   List: FC<PropsWithChildren>;
-  ListItem: FC<PropsWithChildren>;
+  ListItem: FC<PropsWithChildren<StackProps>>;
   ItemLabel: FC<ItemLabelProps>;
   ItemResult: FC<ItemResultProps>;
   Actions: FC<ActionsProps>;

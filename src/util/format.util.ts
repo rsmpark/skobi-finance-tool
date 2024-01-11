@@ -1,11 +1,11 @@
-export const parseStringToNumber = (str: string): number | null => {
+export const parseStringToNumber = (str: string): number => {
   const parsedNumber = parseFloat(str.replace(/,/g, ""));
 
   if (!isNaN(parsedNumber)) {
     return parsedNumber;
   }
 
-  return null;
+  return NaN;
 };
 
 export const parseObjectValuesToNumber = (

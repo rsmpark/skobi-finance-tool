@@ -8,3 +8,7 @@ export const selectReceiptInfo = (state: RootState) => state.tipSummary.receiptI
 export const selectInputsAreEmpty = (state: RootState) => {
   return Object.values(state.tipSummary.receiptInfo).some((value) => value.length === 0);
 };
+
+export const selectTipPercentage = (state: RootState) => {
+  return state.tipSummary.tipPercentage;
+};
