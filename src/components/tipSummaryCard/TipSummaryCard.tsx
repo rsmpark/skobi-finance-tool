@@ -35,35 +35,19 @@ const ListItem: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-const ItemLabel: FC<ItemLabelProps> = ({ label, rounded }) => {
-  const RoundedLabel = () => (
-    <MuiTypography variant="body2" color="text.disabled">
-      Rounded
-    </MuiTypography>
-  );
-
+const ItemLabel: FC<ItemLabelProps> = ({ label, ...props }) => {
   return (
-    <MuiBox>
-      <MuiTypography color="primary.contrastText">{label}</MuiTypography>
-      {rounded ? <RoundedLabel /> : null}
-    </MuiBox>
+    <MuiTypography variant="h5" color="primary.contrastText" {...props}>
+      {label}
+    </MuiTypography>
   );
 };
 
-const ItemResult: FC<ItemResultProps> = ({ value, flooredValue, rounded }) => {
-  const FlooredResult = () => (
-    <MuiTypography variant="body2" color="text.secondary" textAlign="end">
-      ${flooredValue}
-    </MuiTypography>
-  );
-
+const ItemResult: FC<ItemResultProps> = ({ value, ...props }) => {
   return (
-    <MuiBox>
-      <MuiTypography variant="h4" color="text.secondary">
-        ${value}
-      </MuiTypography>
-      {rounded ? <FlooredResult /> : null}
-    </MuiBox>
+    <MuiTypography variant="h4" color="text.secondary" {...props}>
+      ${value}
+    </MuiTypography>
   );
 };
 

@@ -1,17 +1,28 @@
+import MuiBox from "@mui/material/Box";
+
 import { useTypedSelector } from "../../../app/store";
 import { selectKitchenTip } from "../../../features/tipSummary/state/tipSummary.selectors";
-import { floorToDigit } from "../../../util/format.util";
+import { ceilToDigit } from "../../../util/format.util";
 import TipSummaryCard from "../TipSummaryCard";
 
 const KitchenTipListItem = () => {
   const value = useTypedSelector(selectKitchenTip);
-  // TODO: use floored value
-  const flooredValue = floorToDigit(value, 10);
 
   return (
     <TipSummaryCard.ListItem>
-      <TipSummaryCard.ItemLabel label="Kitchen Tip" />
-      <TipSummaryCard.ItemResult value={value} />
+      <MuiBox>
+        <TipSummaryCard.ItemLabel label="Kitchen Tip" />
+        <TipSummaryCard.ItemLabel label="Rounded" variant="body1" color="text.disabled" />
+      </MuiBox>
+      <MuiBox>
+        <TipSummaryCard.ItemResult value={value} />
+        <TipSummaryCard.ItemResult
+          value={ceilToDigit(value, 10)}
+          variant="body1"
+          color="text.secondary"
+          textAlign="end"
+        />
+      </MuiBox>
     </TipSummaryCard.ListItem>
   );
 };
