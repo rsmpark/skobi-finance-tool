@@ -12,6 +12,7 @@ export default defineConfig({
       "@features": path.resolve(__dirname, "./src/features"),
       "@store": path.resolve(__dirname, "./src/app/store"),
       "@util": path.resolve(__dirname, "./src/util"),
+      "@themes": path.resolve(__dirname, "./src/themes"),
     },
   },
 });

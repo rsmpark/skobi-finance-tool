@@ -26,7 +26,8 @@
       "@components/*": ["src/components/*"],
       "@features/*": ["src/features/*"],
       "@store": ["src/app/store"],
-      "@util/*": ["src/util/*"]
+      "@util/*": ["src/util/*"],
+      "@themes/*": ["src/themes/*"]
     }
   }
 }
