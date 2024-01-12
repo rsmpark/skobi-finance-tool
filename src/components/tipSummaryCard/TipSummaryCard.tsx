@@ -9,7 +9,8 @@ import {
   ItemLabelProps,
   ItemResultProps,
   TipSummaryCardComponent,
-} from "../../features/tipSummary/TipSummary.types";
+} from "@features/tipSummary/TipSummary.types";
+import { formatToCurrency } from "@util/format.util";
 
 const TipSummaryCard: TipSummaryCardComponent = ({ children }) => {
   return (
@@ -42,7 +43,7 @@ const ListItem: FC<PropsWithChildren> = ({ children, ...props }) => {
 
 const ItemLabel: FC<ItemLabelProps> = ({ label, ...props }) => {
   return (
-    <MuiTypography variant="h5" color="primary.contrastText" {...props}>
+    <MuiTypography variant="h6" color="primary.contrastText" {...props}>
       {label}
     </MuiTypography>
   );
@@ -50,8 +51,8 @@ const ItemLabel: FC<ItemLabelProps> = ({ label, ...props }) => {
 
 const ItemResult: FC<ItemResultProps> = ({ value, ...props }) => {
   return (
-    <MuiTypography variant="h4" color="text.secondary" {...props}>
-      ${value}
+    <MuiTypography variant="h5" color="text.secondary" {...props}>
+      {formatToCurrency(value)}
     </MuiTypography>
   );
 };

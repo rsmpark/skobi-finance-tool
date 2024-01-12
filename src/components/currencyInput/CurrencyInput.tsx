@@ -21,11 +21,7 @@ const defaultMaskOptions = {
 };
 
 const MuiInput = forwardRef(
-  // TODO: be able to spread input props
-  (
-    { name, placeholder, onChange, onBlur, onFocus, value }: StandardTextFieldProps,
-    ref
-  ) => {
+  ({ name, placeholder, ...props }: StandardTextFieldProps, ref) => {
     return (
       <MuiTextField
         inputRef={ref}
@@ -36,10 +32,7 @@ const MuiInput = forwardRef(
         sx={{
           input: { textAlign: "right" },
         }}
-        value={value}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onChange={onChange}
+        {...props}
         InputProps={{
           startAdornment: (
             <MuiInputAdornment position="start">
