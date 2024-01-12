@@ -1,8 +1,8 @@
 import MuiTypography from "@mui/material/Typography";
 
-import { useTypedSelector } from "../../../app/store";
-import { selectTipPercentage } from "../../../features/tipSummary/state/tipSummary.selectors";
-import TipSummaryCard from "../TipSummaryCard";
+import TipSummaryCard from "@components/tipSummaryCard/TipSummaryCard";
+import { selectTipPercentage } from "@features/tipSummary/state/tipSummary.selectors";
+import { useTypedSelector } from "@store";
 
 const TipPercentageItem = () => {
   const tipPercentage = useTypedSelector(selectTipPercentage);

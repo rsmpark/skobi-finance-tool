@@ -2,6 +2,9 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
     "import/resolver": {
       typescript: {
         project: "./tsconfig.json",
@@ -22,7 +25,6 @@ module.exports = {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     // turn on errors for missing imports
     "import/no-unresolved": "error",
-    // 'import/no-named-as-default-member': 'off',
     "import/order": [
       "error",
       {

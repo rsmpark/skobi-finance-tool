@@ -1,6 +1,6 @@
-import { useTypedSelector } from "../../../app/store";
-import { selectOwner } from "../../../features/tipSummary/state/tipSummary.selectors";
-import TipSummaryCard from "../TipSummaryCard";
+import TipSummaryCard from "@components/tipSummaryCard/TipSummaryCard";
+import { selectOwner } from "@features/tipSummary/state/tipSummary.selectors";
+import { useTypedSelector } from "@store";
 
 const OwnerListItem = () => {
   const value = useTypedSelector(selectOwner);

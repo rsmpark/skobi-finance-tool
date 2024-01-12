@@ -1,9 +1,9 @@
 import MuiBox from "@mui/material/Box";
 
-import { useTypedSelector } from "../../../app/store";
-import { selectKitchenTip } from "../../../features/tipSummary/state/tipSummary.selectors";
-import { ceilToDigit } from "../../../util/format.util";
-import TipSummaryCard from "../TipSummaryCard";
+import TipSummaryCard from "@components/tipSummaryCard/TipSummaryCard";
+import { selectKitchenTip } from "@features/tipSummary/state/tipSummary.selectors";
+import { useTypedSelector } from "@store";
+import { ceilToDigit } from "@util/format.util";
 
 const KitchenTipListItem = () => {
   const value = useTypedSelector(selectKitchenTip);

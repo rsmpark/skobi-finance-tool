@@ -1,6 +1,6 @@
-import { useTypedSelector } from "../../../app/store";
-import { selectHallTip } from "../../../features/tipSummary/state/tipSummary.selectors";
-import TipSummaryCard from "../TipSummaryCard";
+import TipSummaryCard from "@components/tipSummaryCard/TipSummaryCard";
+import { selectHallTip } from "@features/tipSummary/state/tipSummary.selectors";
+import { useTypedSelector } from "@store";
 
 const HallTipListItem = () => {
   const value = useTypedSelector(selectHallTip);

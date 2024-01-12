@@ -1,4 +1,4 @@
-import { RootState } from "../../../app/store";
+import { RootState } from "@store";
 
 export const selectOwner = (state: RootState) => state.tipSummary.owner;
 export const selectTotalTip = (state: RootState) => state.tipSummary.totalTip;

@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { parseObjectValuesToNumber } from "../../../util/format.util";
+import { ReceiptInfoState } from "@features/receiptInfo/ReceiptInfo.types";
+import { parseObjectValuesToNumber } from "@util/format.util";
 import {
   calculateHallTip,
   calculateKitchenTip,
   calculateOwner,
   calculateTipPercentage,
   calculateTotalTip,
-} from "../../../util/tip.util";
-import { ReceiptInfoState } from "../../receiptInfo/ReceiptInfo.types";
+} from "@util/tip.util";
 
 interface TipSummaryState {
   owner: number;
