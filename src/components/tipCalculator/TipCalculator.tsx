@@ -1,8 +1,8 @@
 import MuiPaper from "@mui/material/Paper";
 import MuiStack from "@mui/material/Stack";
 
-import ReceiptInfo from "../../features/receiptInfo/ReceiptInfo";
-import TipSummary from "../../features/tipSummary/TipSummary";
+import ReceiptInfo from "@features/receiptInfo/ReceiptInfo";
+import TipSummary from "@features/tipSummary/TipSummary";
 
 const TipCalculator = () => {
   return (

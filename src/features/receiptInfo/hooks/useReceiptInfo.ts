@@ -1,5 +1,5 @@
-import { useAppDispatch, useTypedSelector } from "../../../app/store";
-import { selectReceiptInfo } from "../../tipSummary/state/tipSummary.selectors";
+import { selectReceiptInfo } from "@features/tipSummary/state/tipSummary.selectors";
+import { useAppDispatch, useTypedSelector } from "@store";
 
 const useReceiptInfo = () => {
   const dispatch = useAppDispatch();

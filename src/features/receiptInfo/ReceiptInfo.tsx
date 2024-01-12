@@ -1,7 +1,8 @@
 import MuiStack from "@mui/material/Stack";
 
-import useReceiptInfo from "./hooks/useReceiptInfo";
-import CurrencyInput from "../../components/currencyInput/CurrencyInput";
+import CurrencyInput from "@components/currencyInput/CurrencyInput";
+import useReceiptInfo from "@features/receiptInfo/hooks/useReceiptInfo";
+
 import {
   updateCash,
   updateGiftCard,
