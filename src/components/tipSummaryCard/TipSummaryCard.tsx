@@ -17,7 +17,7 @@ const TipSummaryCard: TipSummaryCardComponent = ({ children }) => {
     <MuiStack
       spacing={3}
       justifyContent="space-between"
-      sx={{ p: 4, width: "400px", bgcolor: "primary.dark", borderRadius: 3 }}
+      sx={{ p: 4.5, width: "400px", bgcolor: "primary.dark", borderRadius: 3 }}
     >
       {children}
     </MuiStack>
