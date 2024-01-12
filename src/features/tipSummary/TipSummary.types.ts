@@ -6,7 +6,7 @@ export interface ItemLabelProps extends TypographyProps {
   rounded?: boolean;
 }
 export interface ItemResultProps extends TypographyProps {
-  value: number;
+  value: number | string;
   roundedValue?: number;
   rounded?: boolean;
 }

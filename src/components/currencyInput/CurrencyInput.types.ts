@@ -1,4 +1,4 @@
-import { StandardTextFieldProps } from "@mui/material";
+import { StandardTextFieldProps } from "@mui/material/TextField";
 
 export interface NumberMaskOptions {
   prefix: string;
@@ -16,6 +16,7 @@ export interface NumberMaskOptions {
 export interface CurrnecyInputProps extends StandardTextFieldProps {
   maskOptions?: NumberMaskOptions;
   setValue: (value: string) => void;
+  value: string;
 }
 
 export interface MaskInputRenderProps {

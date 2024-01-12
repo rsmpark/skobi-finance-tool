@@ -11,16 +11,24 @@ const TotalTipListItem = () => {
     <TipSummaryCard.ListItem>
       <MuiBox>
         <TipSummaryCard.ItemLabel label="Total Tip" />
-        <TipSummaryCard.ItemLabel label="Rounded" variant="body1" color="text.disabled" />
+        {value != 0 && (
+          <TipSummaryCard.ItemLabel
+            label="Rounded"
+            variant="body1"
+            color="text.disabled"
+          />
+        )}
       </MuiBox>
       <MuiBox>
         <TipSummaryCard.ItemResult value={value} />
-        <TipSummaryCard.ItemResult
-          value={floorToDigit(value, 10)}
-          variant="body1"
-          color="text.secondary"
-          textAlign="end"
-        />
+        {value != 0 && (
+          <TipSummaryCard.ItemResult
+            value={floorToDigit(value, 10)}
+            variant="body1"
+            color="text.secondary"
+            textAlign="end"
+          />
+        )}
       </MuiBox>
     </TipSummaryCard.ListItem>
   );

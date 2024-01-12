@@ -24,6 +24,15 @@ export const parseObjectValuesToNumber = (
   return newObj;
 };
 
+export const formatToCurrency = (value: number | string): string => {
+  const numberValue = typeof value === "string" ? parseStringToNumber(value) : value;
+  const formattedValue = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(numberValue);
+  return formattedValue;
+};
+
 export const floorToDigit = (num: number, digit: number): number => {
   // TODO: Add error handling
   if (digit % 10 === 0 || digit === 1) return Math.floor(num / digit) * digit;

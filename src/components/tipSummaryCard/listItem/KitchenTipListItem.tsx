@@ -12,16 +12,24 @@ const KitchenTipListItem = () => {
     <TipSummaryCard.ListItem>
       <MuiBox>
         <TipSummaryCard.ItemLabel label="Kitchen Tip" />
-        <TipSummaryCard.ItemLabel label="Rounded" variant="body1" color="text.disabled" />
+        {value != 0 && (
+          <TipSummaryCard.ItemLabel
+            label="Rounded"
+            variant="body1"
+            color="text.disabled"
+          />
+        )}
       </MuiBox>
       <MuiBox>
         <TipSummaryCard.ItemResult value={value} />
-        <TipSummaryCard.ItemResult
-          value={ceilToDigit(value, 10)}
-          variant="body1"
-          color="text.secondary"
-          textAlign="end"
-        />
+        {value != 0 && (
+          <TipSummaryCard.ItemResult
+            value={ceilToDigit(value, 10)}
+            variant="body1"
+            color="text.secondary"
+            textAlign="end"
+          />
+        )}
       </MuiBox>
     </TipSummaryCard.ListItem>
   );

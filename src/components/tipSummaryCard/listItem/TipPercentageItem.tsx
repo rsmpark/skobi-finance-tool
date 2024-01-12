@@ -12,7 +12,7 @@ const TipPercentageItem = () => {
         Tip:
       </MuiTypography>
       <MuiTypography variant="h6" color="text.disabled" padding={"0 3px"}>
-        {tipPercentage}%
+        {tipPercentage.toFixed(2)}%
       </MuiTypography>
     </TipSummaryCard.ListItem>
   );
