@@ -2,8 +2,10 @@ import MuiBox from "@mui/material/Box";
 import MuiButton from "@mui/material/Button";
 import {
   DataGrid,
+  GridActionsCellItem,
   GridAddIcon,
   GridColDef,
+  GridDeleteIcon,
   GridRowModes,
   GridRowModesModel,
   GridRowsProp,
@@ -40,6 +42,23 @@ const generateColumns = () => {
         return <b>{params.colDef.headerName}</b>;
       },
     });
+  });
+
+  columns.push({
+    field: "actions",
+    type: "actions",
+    width: 20,
+    cellClassName: "actions",
+    getActions: ({ id }) => {
+      return [
+        <GridActionsCellItem
+          icon={<GridDeleteIcon />}
+          label="Delete"
+          onClick={() => console.log(`Deleting row with id: ${id}`)}
+          color="inherit"
+        />,
+      ];
+    },
   });
 
   return columns;
