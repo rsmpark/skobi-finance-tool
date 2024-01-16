@@ -1,10 +1,9 @@
 import MuiPaper from "@mui/material/Paper";
 import MuiStack from "@mui/material/Stack";
 
-import ReceiptInfo from "@features/receiptInfo/ReceiptInfo";
-import TipSummary from "@features/tipSummary/TipSummary";
+import HallTipSummary from "@features/hallTipSummary/HallTipSummary";
 
-const TipCalculator = () => {
+const HallTipCalculator = () => {
   return (
     <MuiPaper
       component="form"
@@ -12,11 +11,10 @@ const TipCalculator = () => {
       sx={{ width: 800, padding: 4, borderRadius: 4 }}
     >
       <MuiStack direction={{ xs: "column", md: "row" }} spacing={5}>
-        <ReceiptInfo />
-        <TipSummary />
+        <HallTipSummary />
       </MuiStack>
     </MuiPaper>
   );
 };
 
-export default TipCalculator;
+export default HallTipCalculator;
