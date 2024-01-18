@@ -1,9 +1,12 @@
-import AddIcon from "@mui/icons-material/Add";
+import Typography from "@mui/material/Typography";
 import { useMemo } from "react";
 import { useTable, useFlexLayout, useResizeColumns, useSortBy } from "react-table";
 
 import Cell from "@components/table/cell/Cell";
 import Header from "@components/table/header/Header";
+
+import "./table.css";
+import AddIcon from "./icons/AddIcon";
 
 const defaultColumn = {
   minWidth: 50,
@@ -96,7 +99,7 @@ export default function Table({ columns, data, dispatch: dataDispatch, skipReset
             <span className="svg-icon svg-gray" style={{ marginRight: 4 }}>
               <AddIcon />
             </span>
-            New
+            <Typography variant="body2">New</Typography>
           </div>
         </div>
       </div>

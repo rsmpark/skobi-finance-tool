@@ -1,12 +1,12 @@
-import AddIcon from "@mui/icons-material/Add";
-import NotesIcon from "@mui/icons-material/Notes";
-import NumbersIcon from "@mui/icons-material/Numbers";
 import { useState, useEffect } from "react";
 import { usePopper } from "react-popper";
 
 import { shortId } from "@util/table.util";
 
 import { grey } from "../colors";
+import AddIcon from "../icons/AddIcon";
+import NotesIcon from "../icons/NotesIcon";
+import NumbersIcon from "../icons/NumbersIcon";
 
 export default function Header({
   column: { id, created, label, dataType, getResizerProps, getHeaderProps },
