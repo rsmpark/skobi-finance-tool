@@ -76,11 +76,15 @@ export default function Table({ columns, data, dispatch: dataDispatch, skipReset
         // className={clsx("table", isTableResizing() && "noselect")}
       >
         <div>
-          {headerGroups.map((headerGroup) => (
-            <div {...headerGroup.getHeaderGroupProps()} className="tr">
-              {headerGroup.headers.map((column) => column.render("Header"))}
-            </div>
-          ))}
+          {headerGroups.map((headerGroup) => {
+            return (
+              <div {...headerGroup.getHeaderGroupProps()} className="tr">
+                {headerGroup.headers.map((column) =>
+                  column.render("Header", { key: column.id })
+                )}
+              </div>
+            );
+          })}
         </div>
         <div {...getTableBodyProps()}>
           {rows.map((row, i) => {
