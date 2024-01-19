@@ -14,8 +14,8 @@ export default function makeData(count: number) {
   for (let i = 0; i < count; i++) {
     let row = {
       ID: faker.string.uuid(),
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
       email: faker.internet.email(),
       age: Math.floor(20 + Math.random() * 20),
       music: faker.music.genre(),
