@@ -8,7 +8,7 @@ const HallTipCalculator = () => {
     <MuiPaper
       component="form"
       elevation={1}
-      sx={{ width: 800, padding: 4, borderRadius: 4 }}
+      sx={{ width: 850, padding: 4, borderRadius: 4 }}
     >
       <MuiStack direction={{ xs: "column", md: "row" }} spacing={5}>
         <HallTipSummary />

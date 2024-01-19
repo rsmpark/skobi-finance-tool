@@ -220,7 +220,7 @@ const HallTipSummary = () => {
   const [state, dispatch] = useReducer(reducer, makeData(10));
 
   return (
-    <MuiBox sx={{ height: 400, width: "100%" }}>
+    <MuiBox sx={{ width: "100%" }}>
       <Table
         columns={state.columns}
         data={state.data}

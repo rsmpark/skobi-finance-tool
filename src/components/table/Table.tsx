@@ -7,6 +7,7 @@ import Header from "@components/table/header/Header";
 
 import "./table.css";
 import AddIcon from "./icons/AddIcon";
+import clsx from "clsx";
 
 const defaultColumn = {
   minWidth: 50,
@@ -73,7 +74,7 @@ export default function Table({ columns, data, dispatch: dataDispatch, skipReset
     <>
       <div
         {...getTableProps()}
-        // className={clsx("table", isTableResizing() && "noselect")}
+        className={clsx("table", isTableResizing() && "noselect")}
       >
         <div>
           {headerGroups.map((headerGroup) => {
