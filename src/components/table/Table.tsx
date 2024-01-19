@@ -1,113 +1,84 @@
-import Typography from "@mui/material/Typography";
-import { useMemo } from "react";
-import { useTable, useFlexLayout, useResizeColumns, useSortBy } from "react-table";
-
-import Cell from "@components/table/cell/Cell";
-import Header from "@components/table/header/Header";
+import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { useMemo, useReducer, useState } from "react";
 
 import "./table.css";
-import AddIcon from "./icons/AddIcon";
-import clsx from "clsx";
+import { makeData, columns } from "@util/table.util";
 
-const defaultColumn = {
-  minWidth: 50,
-  width: 150,
-  maxWidth: 400,
-  Cell: Cell,
-  Header: Header,
-  sortType: "alphanumericFalsyLast",
-};
+export default function Table() {
+  const [data, setData] = useState(makeData(10));
+  const rerender = useReducer(() => ({}), {})[1];
 
-export default function Table({ columns, data, dispatch: dataDispatch, skipReset }) {
-  const sortTypes = useMemo(
-    () => ({
-      alphanumericFalsyLast(rowA, rowB, columnId, desc) {
-        if (!rowA.values[columnId] && !rowB.values[columnId]) {
-          return 0;
-        }
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
 
-        if (!rowA.values[columnId]) {
-          return desc ? -1 : 1;
-        }
-
-        if (!rowB.values[columnId]) {
-          return desc ? 1 : -1;
-        }
-
-        return isNaN(rowA.values[columnId])
-          ? rowA.values[columnId].localeCompare(rowB.values[columnId])
-          : rowA.values[columnId] - rowB.values[columnId];
-      },
-    }),
-    []
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
-    {
-      columns,
-      data,
-      defaultColumn,
-      dataDispatch,
-      autoResetSortBy: !skipReset,
-      autoResetFilters: !skipReset,
-      autoResetRowState: !skipReset,
-      sortTypes,
-    },
-    useFlexLayout,
-    useResizeColumns,
-    useSortBy
-  );
-
-  function isTableResizing() {
-    for (let headerGroup of headerGroups) {
-      for (let column of headerGroup.headers) {
-        if (column.isResizing) {
-          return true;
-        }
-      }
+  /**
+   * Instead of calling `column.getSize()` on every render for every header
+   * and especially every data cell (very expensive),
+   * we will calculate all column sizes at once at the root table level in a useMemo
+   * and pass the column sizes down as CSS variables to the <table> element.
+   */
+  const columnSizeVars = useMemo(() => {
+    const headers = table.getFlatHeaders();
+    const colSizes: { [key: string]: number } = {};
+    for (let i = 0; i < headers.length; i++) {
+      const header = headers[i]!;
+      colSizes[`--header-${header.id}-size`] = header.getSize();
+      colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
     }
-
-    return false;
-  }
+    return colSizes;
+  }, [table.getState().columnSizingInfo]);
 
   return (
-    <>
-      <div
-        {...getTableProps()}
-        className={clsx("table", isTableResizing() && "noselect")}
-      >
+    <div className="p-2">
+      <div className="table" style={{ ...columnSizeVars }}>
         <div>
-          {headerGroups.map((headerGroup) => {
-            return (
-              <div {...headerGroup.getHeaderGroupProps()} className="tr">
-                {headerGroup.headers.map((column) =>
-                  column.render("Header", { key: column.id })
-                )}
-              </div>
-            );
-          })}
+          {table.getHeaderGroups().map((headerGroup) => (
+            <div key={headerGroup.id} className="tr">
+              {headerGroup.headers.map((header) => (
+                <div
+                  {...{
+                    key: header.id,
+                    className: "th noselect",
+                    style: {
+                      width: `calc(var(--header-${header?.id}-size) * 1px)`,
+                    },
+                  }}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(header.column.columnDef.header, header.getContext())}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-        <div {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <div {...row.getRowProps()} className="tr">
-                {row.cells.map((cell) => (
-                  <div {...cell.getCellProps()} className="td">
-                    {cell.render("Cell")}
-                  </div>
-                ))}
-              </div>
-            );
-          })}
-          <div className="tr add-row" onClick={() => dataDispatch({ type: "add_row" })}>
-            <span className="svg-icon svg-gray" style={{ marginRight: 4 }}>
-              <AddIcon />
-            </span>
-            <Typography variant="body2">New</Typography>
-          </div>
+        <div>
+          {table.getRowModel().rows.map((row) => (
+            <div key={row.id} className="tr">
+              {row.getVisibleCells().map((cell) => (
+                <div
+                  {...{
+                    key: cell.id,
+                    className: "td",
+                    style: {
+                      width: `calc(var(--col-${cell.column.id}-size) * 1px)`,
+                    },
+                  }}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
-    </>
+      <div className="h-4" />
+      <button onClick={() => rerender()} className="border p-2">
+        Rerender
+      </button>
+    </div>
   );
 }

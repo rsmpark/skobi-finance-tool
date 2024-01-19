@@ -132,6 +132,9 @@
   background-color: #eeeeee;
 }
 
+.tr {
+  display: flex;
+}
 .tr:last-child .td {
   border-bottom: 0;
 }
