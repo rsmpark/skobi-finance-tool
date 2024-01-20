@@ -4,6 +4,9 @@ import { useMemo, useState } from "react";
 import "./table.css";
 import { makeData, columns } from "@util/table.util";
 
+import AddIcon from "./icons/AddIcon";
+import { HallTipSummaryData } from "./Table.types";
+
 export default function Table() {
   const [data, setData] = useState(makeData(5));
 
@@ -25,9 +28,25 @@ export default function Table() {
           })
         );
       },
+      addRow: () => {
+        const newRow: HallTipSummaryData = {
+          name: "",
+          mon: 0,
+          tue: 0,
+          wed: 0,
+          thu: 0,
+          fri: 0,
+          sat: 0,
+          sun: 0,
+        };
+        const setFunc = (old: HallTipSummaryData[]) => [...old, newRow];
+        setData(setFunc);
+      },
     },
   });
 
+  const meta = table.options.meta;
+  const headers = table.getFlatHeaders();
   /**
    * Instead of calling `column.getSize()` on every render for every header
    * and especially every data cell (very expensive),
@@ -35,7 +54,6 @@ export default function Table() {
    * and pass the column sizes down as CSS variables to the <table> element.
    */
   const columnSizeVars = useMemo(() => {
-    const headers = table.getFlatHeaders();
     const colSizes: { [key: string]: number } = {};
     for (let i = 0; i < headers.length; i++) {
       const header = headers[i]!;
@@ -43,7 +61,7 @@ export default function Table() {
       colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
     }
     return colSizes;
-  }, [table.getState().columnSizingInfo]);
+  }, [headers]);
 
   return (
     <div className="p-2">
@@ -89,8 +107,13 @@ export default function Table() {
           ))}
         </div>
       </div>
+      <div className="tr add-row" onClick={meta?.addRow}>
+        <span className="svg-icon svg-gray" style={{ marginRight: 4 }}>
+          <AddIcon />
+        </span>
+        New
+      </div>
       <pre>{JSON.stringify(data, null, "\t")}</pre>
-      <div className="h-4" />
     </div>
   );
 }

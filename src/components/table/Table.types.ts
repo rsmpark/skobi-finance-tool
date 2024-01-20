@@ -1,5 +1,3 @@
-import { RowData, TableMeta } from "@tanstack/react-table";
-
 export type HallTipSummaryData = {
   name: string;
   mon: number;
@@ -13,7 +11,12 @@ export type HallTipSummaryData = {
 
 // TODO: where to place declare module files
 declare module "@tanstack/table-core" {
-  interface TableMeta<TData extends RowData> {
+  interface TableMeta<TData> {
     updateData: (rowIndex: number, columnId: string, value: string | number) => void;
+    addRow: () => void;
+  }
+
+  interface ColumnMeta<TData, TValue> {
+    placeholder: string;
   }
 }

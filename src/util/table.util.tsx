@@ -42,7 +42,7 @@ const generateDayColumns = () => {
       header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
       size: 100,
       meta: {
-        type: "number",
+        placeholder: "0",
       },
     })
   );
@@ -53,6 +53,9 @@ export const columns = [
     cell: Cell,
     header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
     size: 200,
+    meta: {
+      placeholder: "Name",
+    },
   }),
   ...generateDayColumns(),
 ];
