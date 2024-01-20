@@ -1,17 +1,31 @@
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { useMemo, useReducer, useState } from "react";
+import { useMemo, useState } from "react";
 
 import "./table.css";
 import { makeData, columns } from "@util/table.util";
 
 export default function Table() {
   const [data, setData] = useState(makeData(10));
-  const rerender = useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    meta: {
+      updateData: (rowIndex: number, columnId: string, value: string | number) => {
+        setData((old) =>
+          old.map((row, index) => {
+            if (index === rowIndex) {
+              return {
+                ...old[rowIndex],
+                [columnId]: value,
+              };
+            }
+            return row;
+          })
+        );
+      },
+    },
   });
 
   /**
@@ -76,9 +90,6 @@ export default function Table() {
         </div>
       </div>
       <div className="h-4" />
-      <button onClick={() => rerender()} className="border p-2">
-        Rerender
-      </button>
     </div>
   );
 }
