@@ -5,7 +5,7 @@ import "./table.css";
 import { makeData, columns } from "@util/table.util";
 
 export default function Table() {
-  const [data, setData] = useState(makeData(10));
+  const [data, setData] = useState(makeData(5));
 
   const table = useReactTable({
     data,
@@ -89,6 +89,7 @@ export default function Table() {
           ))}
         </div>
       </div>
+      <pre>{JSON.stringify(data, null, "\t")}</pre>
       <div className="h-4" />
     </div>
   );

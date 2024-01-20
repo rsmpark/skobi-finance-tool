@@ -41,6 +41,9 @@ const generateDayColumns = () => {
       cell: Cell,
       header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
       size: 100,
+      meta: {
+        type: "number",
+      },
     })
   );
 };
