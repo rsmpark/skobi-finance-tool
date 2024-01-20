@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { CellContext } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
-import ContentEditable from "react-contenteditable";
 
 import { HallTipSummaryData } from "../Table.types";
 
@@ -31,6 +30,7 @@ const Cell = ({
       onChange={(e) => setValue(e.target.value)}
       onBlur={onBlur}
       className="data-input"
+      placeholder={column.columnDef.meta?.placeholder}
     />
   );
 };
