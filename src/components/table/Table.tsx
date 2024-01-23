@@ -5,6 +5,7 @@ import "./table.css";
 import { makeData, columns } from "@util/table.util";
 
 import AddIcon from "./icons/AddIcon";
+import Row from "./row/Row";
 import { HallTipSummaryData } from "./Table.types";
 
 export default function Table() {
@@ -42,6 +43,11 @@ export default function Table() {
         const setFunc = (old: HallTipSummaryData[]) => [...old, newRow];
         setData(setFunc);
       },
+      removeRow: (rowIndex: number) => {
+        const setFilterFunc = (old: HallTipSummaryData[]) =>
+          old.filter((_row: HallTipSummaryData, index: number) => index !== rowIndex);
+        setData(setFilterFunc);
+      },
     },
   });
 
@@ -62,6 +68,12 @@ export default function Table() {
     }
     return colSizes;
   }, [headers]);
+
+  const Rows = () => {
+    return table
+      .getRowModel()
+      .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
+  };
 
   return (
     <div className="p-2">
@@ -88,23 +100,7 @@ export default function Table() {
           ))}
         </div>
         <div>
-          {table.getRowModel().rows.map((row) => (
-            <div key={row.id} className="tr">
-              {row.getVisibleCells().map((cell) => (
-                <div
-                  {...{
-                    key: cell.id,
-                    className: "td",
-                    style: {
-                      width: `calc(var(--col-${cell.column.id}-size) * 1px)`,
-                    },
-                  }}
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </div>
-              ))}
-            </div>
-          ))}
+          <Rows />
         </div>
       </div>
       <div className="tr add-row" onClick={meta?.addRow}>

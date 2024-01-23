@@ -14,6 +14,7 @@ declare module "@tanstack/table-core" {
   interface TableMeta<TData> {
     updateData: (rowIndex: number, columnId: string, value: string | number) => void;
     addRow: () => void;
+    removeRow: (rowIndex: number) => void;
   }
 
   interface ColumnMeta<TData, TValue> {
