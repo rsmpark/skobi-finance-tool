@@ -1,10 +1,23 @@
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Row as RowType, flexRender } from "@tanstack/react-table";
+import { IconButton, IconButtonProps } from "@mui/material";
+import { Row as RowType, TableMeta, flexRender } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
 
 import { HallTipSummaryData } from "../Table.types";
 
-const Row = ({ rowData }: { rowData: RowType<HallTipSummaryData> }) => {
+const DeleteIconButton = (props: IconButtonProps) => (
+  <IconButton {...props}>
+    <DeleteIcon />
+  </IconButton>
+);
+
+const Row = ({
+  rowData,
+  meta,
+}: {
+  rowData: RowType<HallTipSummaryData>;
+  meta: TableMeta<HallTipSummaryData>;
+}) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const elemId = `tr_${rowData.id}`;
@@ -29,7 +42,7 @@ const Row = ({ rowData }: { rowData: RowType<HallTipSummaryData> }) => {
 
   return (
     <div key={rowData.id} className="tr" id={elemId}>
-      {isHovering && <DeleteIcon />}
+      {isHovering && <DeleteIconButton onClick={() => meta.removeRow(rowData.index)} />}
       {rowData.getVisibleCells().map((cell) => (
         <div
           key={cell.id}

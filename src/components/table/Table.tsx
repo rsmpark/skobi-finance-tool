@@ -1,4 +1,3 @@
-import DeleteIcon from "@mui/icons-material/Delete";
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 
@@ -6,8 +5,8 @@ import "./table.css";
 import { makeData, columns } from "@util/table.util";
 
 import AddIcon from "./icons/AddIcon";
-import { HallTipSummaryData } from "./Table.types";
 import Row from "./row/Row";
+import { HallTipSummaryData } from "./Table.types";
 
 export default function Table() {
   const [data, setData] = useState(makeData(5));
@@ -44,6 +43,11 @@ export default function Table() {
         const setFunc = (old: HallTipSummaryData[]) => [...old, newRow];
         setData(setFunc);
       },
+      removeRow: (rowIndex: number) => {
+        const setFilterFunc = (old: HallTipSummaryData[]) =>
+          old.filter((_row: HallTipSummaryData, index: number) => index !== rowIndex);
+        setData(setFilterFunc);
+      },
     },
   });
 
@@ -66,7 +70,9 @@ export default function Table() {
   }, [headers]);
 
   const Rows = () => {
-    return table.getRowModel().rows.map((row) => <Row rowData={row} key={row.id} />);
+    return table
+      .getRowModel()
+      .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
   };
 
   return (
