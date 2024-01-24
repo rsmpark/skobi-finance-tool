@@ -1,8 +1,12 @@
-import { Header, flexRender } from "@tanstack/react-table";
+import { Header as HeaderType, flexRender } from "@tanstack/react-table";
 
 import { HallTipSummaryData } from "../Table.types";
 
-const Header = ({ headerData }: { headerData: Header<HallTipSummaryData, unknown> }) => {
+const Header = ({
+  headerData,
+}: {
+  headerData: HeaderType<HallTipSummaryData, unknown>;
+}) => {
   return (
     <div
       {...{
