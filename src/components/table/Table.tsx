@@ -1,5 +1,6 @@
-import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
+
+import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
 import "./table.css";
 import { makeData, columns } from "@util/table.util";

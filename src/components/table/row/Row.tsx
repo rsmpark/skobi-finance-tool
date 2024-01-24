@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton, IconButtonProps } from "@mui/material";
 import { Row as RowType, TableMeta, flexRender } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
 
 import { HallTipSummaryData } from "../Table.types";
 

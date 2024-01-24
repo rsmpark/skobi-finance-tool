@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
+
 import { styled } from "@mui/material/styles";
 import { CellContext } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
 
 import { HallTipSummaryData } from "../Table.types";
 

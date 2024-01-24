@@ -1,6 +1,7 @@
+import { FC, PropsWithChildren } from "react";
+
 import { StackProps } from "@mui/material/Stack";
 import { TypographyProps } from "@mui/material/Typography";
-import { FC, PropsWithChildren } from "react";
 export interface ItemLabelProps extends TypographyProps {
   label: string;
   rounded?: boolean;
