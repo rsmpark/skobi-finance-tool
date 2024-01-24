@@ -36,6 +36,14 @@ module.exports = {
           "index", // <- index imports
           "unknown", // <- unknown
         ],
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "external",
+            position: "before",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["react"],
         "newlines-between": "always",
         alphabetize: {
           /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
