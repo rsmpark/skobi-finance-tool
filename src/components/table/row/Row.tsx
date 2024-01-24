@@ -17,7 +17,7 @@ const Row = ({
   meta,
 }: {
   rowData: RowType<HallTipSummaryData>;
-  meta: TableMeta<HallTipSummaryData>;
+  meta?: TableMeta<HallTipSummaryData>;
 }) => {
   const [isHovering, setIsHovering] = useState(false);
 
@@ -43,7 +43,7 @@ const Row = ({
 
   return (
     <div key={rowData.id} className="tr" id={elemId}>
-      {isHovering && <DeleteIconButton onClick={() => meta.removeRow(rowData.index)} />}
+      {isHovering && <DeleteIconButton onClick={() => meta?.removeRow(rowData.index)} />}
       {rowData.getVisibleCells().map((cell) => (
         <div
           key={cell.id}
