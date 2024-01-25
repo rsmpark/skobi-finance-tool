@@ -1,8 +1,9 @@
+import { FC, PropsWithChildren } from "react";
+
 import MuiBox from "@mui/material/Box";
 import MuiButton from "@mui/material/Button";
 import MuiStack from "@mui/material/Stack";
 import MuiTypography from "@mui/material/Typography";
-import { FC, PropsWithChildren } from "react";
 
 import {
   ActionsProps,

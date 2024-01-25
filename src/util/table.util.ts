@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
-import { Typography } from "@mui/material";
 import { createColumnHelper } from "@tanstack/react-table";
 
 import Cell from "@components/table/cell/Cell";
+import { HeaderCell } from "@components/table/header/Header";
 import { HallTipSummaryData } from "@components/table/Table.types";
 
 const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
@@ -13,10 +13,11 @@ const generateDayColumns = () => {
   return days.map((day) =>
     columnHelper.accessor(day, {
       cell: Cell,
-      header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
+      header: HeaderCell,
       size: 100,
       meta: {
         placeholder: "0",
+        type: "number",
       },
     })
   );
@@ -24,10 +25,11 @@ const generateDayColumns = () => {
 export const columns = [
   columnHelper.accessor("name", {
     cell: Cell,
-    header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
+    header: HeaderCell,
     size: 200,
     meta: {
       placeholder: "Name",
+      type: "text",
     },
   }),
   ...generateDayColumns(),
