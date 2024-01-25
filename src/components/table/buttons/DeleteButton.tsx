@@ -3,7 +3,7 @@ import { GridDeleteIcon as MuiGridDeleteIcon } from "@mui/x-data-grid/material/i
 
 const DeleteButton = (props: IconButtonProps) => (
   <MuiIconButton {...props}>
-    <MuiGridDeleteIcon />
+    <MuiGridDeleteIcon sx={{ fontSize: "18px" }} />
   </MuiIconButton>
 );
 

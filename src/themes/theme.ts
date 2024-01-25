@@ -9,7 +9,7 @@ const Colors = {
   Grayish_cyan: "hsl(184, 14%, 56%)",
   Light_grayish_cyan: "hsl(185, 41%, 84%)",
   Very_light_grayish_cyan: "hsl(189, 41%, 97%)",
-  Ligh_grey: "hsl(0, 0%, 62%)",
+  Light_gray: "hsl(0, 0%, 62%)",
   White: "hsl(0, 0%, 100%)",
 };
 
@@ -99,6 +99,16 @@ const theme = createTheme({
       },
     },
 
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Space Mono",
+          borderRadius: "50%",
+          color: Colors.Light_gray,
+        },
+      },
+    },
+
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -130,7 +140,7 @@ const theme = createTheme({
         root: {
           fontFamily: "Space Mono",
           fontSize: 14,
-          color: Colors.Ligh_grey,
+          color: Colors.Light_gray,
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: "lightgray",
             borderWidth: "2px",
