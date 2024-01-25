@@ -30,7 +30,6 @@ const Row: FC<RowProps> = ({ rowData, meta }) => {
 
   return (
     <div key={rowData.id} className="tr" id={elemId}>
-      {isHovering && <DeleteButton onClick={() => meta?.removeRow(rowData.index)} />}
       {rowData.getVisibleCells().map((cell) => (
         <div
           key={cell.id}
@@ -39,6 +38,11 @@ const Row: FC<RowProps> = ({ rowData, meta }) => {
             width: `calc(var(--col-${cell.column.id}-size) * 1px)`,
           }}
         >
+          {cell.column.id === "name" && isHovering && (
+            <span className="row-option delete">
+              <DeleteButton onClick={() => meta?.removeRow(rowData.index)} />
+            </span>
+          )}
           {flexRender(cell.column.columnDef.cell, cell.getContext())}
         </div>
       ))}

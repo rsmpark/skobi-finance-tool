@@ -42,7 +42,7 @@ const Header: FC<HeaderProps> = ({ headerData, type }) => {
 };
 
 export const HeaderCell = (info: HeaderContext<HallTipSummaryData, string>) => (
-  <MuiTypography variant="h6" fontSize={14}>
+  <MuiTypography variant="h6" fontSize={13}>
     {info.header.id.toUpperCase()}
   </MuiTypography>
 );

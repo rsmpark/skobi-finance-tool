@@ -2,6 +2,8 @@ import { useMemo } from "react";
 
 import "./table.css";
 
+import MuiBox from "@mui/material/Box";
+
 import AddButton from "@components/table/buttons/AddButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
@@ -44,7 +46,7 @@ export default function Table() {
   };
 
   return (
-    <div className="p-2">
+    <MuiBox px={5}>
       <div className="table" style={{ ...columnSizeVars }}>
         <div>
           <Headers />
@@ -54,7 +56,7 @@ export default function Table() {
         </div>
       </div>
       <AddButton onClick={() => meta?.addRow()} />
-      <pre>{JSON.stringify(data, null, "\t")}</pre>
-    </div>
+      {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
+    </MuiBox>
   );
 }
