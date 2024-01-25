@@ -7,7 +7,7 @@ import MuiTypography from "@mui/material/Typography";
 import MaskedInput from "react-text-mask";
 import { createNumberMask } from "text-mask-addons";
 
-import { CurrnecyInputProps } from "./CurrencyInput.types";
+import { CurrnecyInputProps } from "@components/currencyInput/CurrencyInput.types";
 
 const defaultMaskOptions = {
   prefix: "",

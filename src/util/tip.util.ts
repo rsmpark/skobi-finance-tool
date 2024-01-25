@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 
-import { ceilToDigit, floorToDigit, parseStringToNumber } from "./format.util";
+import { ceilToDigit, floorToDigit, parseStringToNumber } from "@util/format.util";
 
 export const calculateOwner = (salesReportTotal: number, netSales: number): number => {
   return new BigNumber(salesReportTotal).minus(netSales).toNumber();

@@ -23,9 +23,11 @@
     /* Path Aliasing */
     "baseUrl": "./",
     "paths": {
+      "@app/*": ["src/app/*"],
+      "@store": ["src/app/store"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@features/*": ["src/features/*"],
-      "@store": ["src/app/store"],
       "@util/*": ["src/util/*"],
       "@themes/*": ["src/themes/*"]
     }

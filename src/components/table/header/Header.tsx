@@ -4,9 +4,8 @@ import MuiTypography from "@mui/material/Typography";
 import { HeaderContext, flexRender } from "@tanstack/react-table";
 
 import NotesIcon from "@components/table/icons/NotesIcon";
+import NumbersIcon from "@components/table/icons/NumbersIcon";
 import { HallTipSummaryData, HeaderProps } from "@components/table/Table.types";
-
-import NumbersIcon from "../icons/NumbersIcon";
 
 const getIcon = (type: string) => {
   switch (type) {

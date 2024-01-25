@@ -2,14 +2,13 @@ import MuiStack from "@mui/material/Stack";
 
 import CurrencyInput from "@components/currencyInput/CurrencyInput";
 import useReceiptInfo from "@features/receiptInfo/hooks/useReceiptInfo";
-
 import {
   updateCash,
   updateGiftCard,
   updateNetSales,
   updateSalesReportTotal,
   updateTips,
-} from "../tipSummary/state/tipSummary.slice";
+} from "@features/tipSummary/state/tipSummary.slice";
 
 const ReceiptInfo = () => {
   const { state, dispatch } = useReceiptInfo();

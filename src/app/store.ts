@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-import tipSummarySlice from "../features/tipSummary/state/tipSummary.slice";
+import tipSummarySlice from "@features/tipSummary/state/tipSummary.slice";
 
 export const store = configureStore({
   reducer: {
