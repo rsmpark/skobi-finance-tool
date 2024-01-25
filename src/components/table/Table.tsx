@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import "./table.css";
+import "@assets/css/table.css";
 
 import MuiBox from "@mui/material/Box";
 

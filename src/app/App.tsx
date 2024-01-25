@@ -1,6 +1,6 @@
 import MuiStack from "@mui/material/Stack";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import "../assets/css/fonts.css";
+import "@assets/css/fonts.css";
 
 import HallTipCalculator from "@components/hallTipCalculator/HallTipCalculator";
 import TipCalculator from "@components/tipCalculator/TipCalculator";
