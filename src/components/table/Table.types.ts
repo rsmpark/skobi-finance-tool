@@ -1,12 +1,14 @@
 import { Row, TableMeta } from "@tanstack/react-table";
 
 declare module "@tanstack/table-core" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface TableMeta<TData> {
     updateData: (rowIndex: number, columnId: string, value: string | number) => void;
     addRow: () => void;
     removeRow: (rowIndex: number) => void;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData, TValue> {
     placeholder: string;
   }

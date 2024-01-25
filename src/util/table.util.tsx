@@ -5,12 +5,12 @@ import { createColumnHelper } from "@tanstack/react-table";
 import Cell from "@components/table/cell/Cell";
 import { HallTipSummaryData } from "@components/table/Table.types";
 
-const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
 
 const columnHelper = createColumnHelper<HallTipSummaryData>();
 
 const generateDayColumns = () => {
-  return DAYS.map((day) =>
+  return days.map((day) =>
     columnHelper.accessor(day, {
       cell: Cell,
       header: (info) => <Typography>{info.header.id.toUpperCase()}</Typography>,
