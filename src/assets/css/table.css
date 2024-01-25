@@ -132,6 +132,7 @@
 
 .tr {
   display: flex;
+  position: relative;
 }
 .tr:last-child .td {
   border-bottom: 0;
@@ -221,7 +222,6 @@
   margin: 0;
   border-bottom: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
-  position: relative;
 }
 
 .text-align-right {
@@ -276,4 +276,8 @@
 .row-option.delete {
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 12.5%;
+  left: -6%;
+  z-index: 1;
 }
