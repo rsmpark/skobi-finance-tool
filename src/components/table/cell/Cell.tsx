@@ -1,13 +1,9 @@
 import { FC, useEffect, useState } from "react";
 
-import { styled } from "@mui/material/styles";
+import { Input } from "@mui/material";
 import { CellContext } from "@tanstack/react-table";
 
 import { HallTipSummaryData } from "@components/table/Table.types";
-
-const Input = styled("input")(({ theme }) => ({
-  ...theme.typography.body1,
-}));
 
 const Cell: FC<CellContext<HallTipSummaryData, string | number>> = ({
   getValue,
@@ -32,6 +28,7 @@ const Cell: FC<CellContext<HallTipSummaryData, string | number>> = ({
       onBlur={onBlur}
       className="data-input"
       placeholder={column.columnDef.meta?.placeholder}
+      disableUnderline
     />
   );
 };

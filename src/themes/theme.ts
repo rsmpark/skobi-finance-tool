@@ -9,6 +9,7 @@ const Colors = {
   Grayish_cyan: "hsl(184, 14%, 56%)",
   Light_grayish_cyan: "hsl(185, 41%, 84%)",
   Very_light_grayish_cyan: "hsl(189, 41%, 97%)",
+  Ligh_grey: "hsl(0, 0%, 62%)",
   White: "hsl(0, 0%, 100%)",
 };
 
@@ -103,7 +104,7 @@ const theme = createTheme({
         root: {
           fontFamily: "Space Mono",
           fontSize: 18,
-          color: "Colors.Very_dark_cyan",
+          color: Colors.Very_dark_cyan,
           backgroundColor: Colors.Very_light_grayish_cyan,
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: "lightgray",
@@ -120,6 +121,27 @@ const theme = createTheme({
 
         notchedOutline: {
           borderColor: "lightgray",
+        },
+      },
+    },
+
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Space Mono",
+          fontSize: 14,
+          color: Colors.Ligh_grey,
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "lightgray",
+            borderWidth: "2px",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderWidth: "2px",
+            borderColor: Colors.Strong_cyan,
+          },
+          "&:focus": {
+            border: "10px solid red",
+          },
         },
       },
     },
