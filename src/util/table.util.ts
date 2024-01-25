@@ -14,7 +14,7 @@ const generateDayColumns = () => {
     columnHelper.accessor(day, {
       cell: Cell,
       header: HeaderCell,
-      size: 100,
+      size: 120,
       meta: {
         placeholder: "0",
         type: "number",

@@ -12,8 +12,6 @@ import Row from "@components/table/row/Row";
 export default function Table() {
   const { table } = useTable();
 
-  console.log("Table rendered");
-
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();
 
