@@ -1,4 +1,4 @@
-import { Row, TableMeta } from "@tanstack/react-table";
+import { Header, Row, TableMeta } from "@tanstack/react-table";
 
 declare module "@tanstack/table-core" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -11,6 +11,7 @@ declare module "@tanstack/table-core" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData, TValue> {
     placeholder: string;
+    type: string;
   }
 }
 
@@ -27,6 +28,11 @@ export type HallTipSummaryData = {
 
 export type AddButtonProps = {
   onClick: () => void;
+};
+
+export type HeaderProps = {
+  headerData: Header<HallTipSummaryData, unknown>;
+  type: string;
 };
 
 export type RowProps = {

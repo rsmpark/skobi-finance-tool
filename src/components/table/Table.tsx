@@ -33,7 +33,11 @@ export default function Table() {
     return table.getHeaderGroups().map((headerGroup) => (
       <div key={headerGroup.id} className="tr">
         {headerGroup.headers.map((header) => (
-          <Header headerData={header} key={header.id} />
+          <Header
+            headerData={header}
+            key={header.id}
+            type={header.column.columnDef.meta?.type ?? "text"}
+          />
         ))}
       </div>
     ));
