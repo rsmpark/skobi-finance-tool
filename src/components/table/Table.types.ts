@@ -1,3 +1,19 @@
+import { Row, TableMeta } from "@tanstack/react-table";
+
+declare module "@tanstack/table-core" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface TableMeta<TData> {
+    updateData: (rowIndex: number, columnId: string, value: string | number) => void;
+    addRow: () => void;
+    removeRow: (rowIndex: number) => void;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface ColumnMeta<TData, TValue> {
+    placeholder: string;
+  }
+}
+
 export type HallTipSummaryData = {
   name: string;
   mon: number;
@@ -9,15 +25,11 @@ export type HallTipSummaryData = {
   sun: number;
 };
 
-// TODO: where to place declare module files
-declare module "@tanstack/table-core" {
-  interface TableMeta<TData> {
-    updateData: (rowIndex: number, columnId: string, value: string | number) => void;
-    addRow: () => void;
-    removeRow: (rowIndex: number) => void;
-  }
+export type AddButtonProps = {
+  onClick: () => void;
+};
 
-  interface ColumnMeta<TData, TValue> {
-    placeholder: string;
-  }
-}
+export type RowProps = {
+  rowData: Row<HallTipSummaryData>;
+  meta?: TableMeta<HallTipSummaryData>;
+};
