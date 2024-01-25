@@ -15,6 +15,8 @@ const Colors = {
 
 const theme = createTheme({
   typography: {
+    fontWeightMedium: 600,
+    fontWeightLight: 400,
     body1: { fontSize: (14 / 16) * 19 },
   },
   palette: {

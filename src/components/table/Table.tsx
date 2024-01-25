@@ -10,7 +10,9 @@ import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
 
 export default function Table() {
-  const { table, data } = useTable();
+  const { table } = useTable();
+
+  console.log("Table rendered");
 
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();
@@ -48,14 +50,11 @@ export default function Table() {
   return (
     <MuiBox px={5}>
       <div className="table" style={{ ...columnSizeVars }}>
-        <div>
-          <Headers />
-        </div>
-        <div>
-          <Rows />
-        </div>
+        <Headers />
+        <Rows />
+        <AddButton onClick={() => meta?.addRow()} />
       </div>
-      <AddButton onClick={() => meta?.addRow()} />
+
       {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
     </MuiBox>
   );
