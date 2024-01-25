@@ -9,12 +9,16 @@ const Colors = {
   Grayish_cyan: "hsl(184, 14%, 56%)",
   Light_grayish_cyan: "hsl(185, 41%, 84%)",
   Very_light_grayish_cyan: "hsl(189, 41%, 97%)",
-  Light_gray: "hsl(0, 0%, 62%)",
+  Light_gray: "hsl(0, 0%, 52%)",
+  Lighter_gray: "hsl(0, 0%, 72%)",
   White: "hsl(0, 0%, 100%)",
 };
 
 const theme = createTheme({
   typography: {
+    fontFamily: "Space Mono",
+    fontWeightMedium: 600,
+    fontWeightLight: 400,
     body1: { fontSize: (14 / 16) * 19 },
   },
   palette: {
@@ -141,17 +145,6 @@ const theme = createTheme({
           fontFamily: "Space Mono",
           fontSize: 14,
           color: Colors.Light_gray,
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "lightgray",
-            borderWidth: "2px",
-          },
-          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderWidth: "2px",
-            borderColor: Colors.Strong_cyan,
-          },
-          "&:focus": {
-            border: "10px solid red",
-          },
         },
       },
     },

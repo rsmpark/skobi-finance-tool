@@ -16,8 +16,10 @@
   transition: opacity 300ms;
 }
 
-.svg-icon svg {
+.svg-icon {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .svg-text svg {
@@ -61,6 +63,7 @@
   background-color: white;
   box-sizing: border-box;
   flex: 1 1 auto;
+  width: 100%;
 }
 
 .data-input:focus {
@@ -174,9 +177,10 @@
   color: #424242;
   align-items: stretch;
   padding: 0;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   position: relative;
+  align-items: center;
 }
 
 .td-content {
