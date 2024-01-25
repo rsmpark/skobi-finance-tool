@@ -1,15 +1,5 @@
-export type HallTipSummaryData = {
-  name: string;
-  mon: number;
-  tue: number;
-  wed: number;
-  thu: number;
-  fri: number;
-  sat: number;
-  sun: number;
-};
+import { Row, TableMeta } from "@tanstack/react-table";
 
-// TODO: where to place declare module files
 declare module "@tanstack/table-core" {
   interface TableMeta<TData> {
     updateData: (rowIndex: number, columnId: string, value: string | number) => void;
@@ -21,3 +11,23 @@ declare module "@tanstack/table-core" {
     placeholder: string;
   }
 }
+
+export type HallTipSummaryData = {
+  name: string;
+  mon: number;
+  tue: number;
+  wed: number;
+  thu: number;
+  fri: number;
+  sat: number;
+  sun: number;
+};
+
+export type AddButtonProps = {
+  onClick: () => void;
+};
+
+export type RowProps = {
+  rowData: Row<HallTipSummaryData>;
+  meta?: TableMeta<HallTipSummaryData>;
+};

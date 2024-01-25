@@ -2,9 +2,8 @@ import { useState } from "react";
 
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
+import { HallTipSummaryData } from "@components/table/Table.types";
 import { makeData, columns } from "@util/table.util";
-
-import { HallTipSummaryData } from "../Table.types";
 
 const useTable = () => {
   const [data, setData] = useState(makeData(5));

@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { styled } from "@mui/material/styles";
 import { CellContext } from "@tanstack/react-table";
 
-import { HallTipSummaryData } from "../Table.types";
+import { HallTipSummaryData } from "@components/table/Table.types";
 
 const Input = styled("input")(({ theme }) => ({
   ...theme.typography.body1,
 }));
 
-const Cell = ({
+const Cell: FC<CellContext<HallTipSummaryData, string | number>> = ({
   getValue,
   row,
   column,
   table,
-}: CellContext<HallTipSummaryData, string | number>) => {
+}) => {
   const initialValue = getValue();
   const [value, setValue] = useState(initialValue);
 

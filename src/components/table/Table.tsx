@@ -2,10 +2,10 @@ import { useMemo } from "react";
 
 import "./table.css";
 
-import Header from "./header/Header";
-import useTable from "./hooks/useTable";
-import AddIcon from "./icons/AddIcon";
-import Row from "./row/Row";
+import AddButton from "@components/table/buttons/AddButton";
+import Header from "@components/table/header/Header";
+import useTable from "@components/table/hooks/useTable";
+import Row from "@components/table/row/Row";
 
 export default function Table() {
   const { table, data } = useTable();
@@ -33,7 +33,7 @@ export default function Table() {
     return table.getHeaderGroups().map((headerGroup) => (
       <div key={headerGroup.id} className="tr">
         {headerGroup.headers.map((header) => (
-          <Header headerData={header} />
+          <Header headerData={header} key={header.id} />
         ))}
       </div>
     ));
@@ -49,12 +49,7 @@ export default function Table() {
           <Rows />
         </div>
       </div>
-      <div className="tr add-row" onClick={meta?.addRow}>
-        <span className="svg-icon svg-gray" style={{ marginRight: 4 }}>
-          <AddIcon />
-        </span>
-        New
-      </div>
+      <AddButton onClick={() => meta?.addRow()} />
       <pre>{JSON.stringify(data, null, "\t")}</pre>
     </div>
   );
