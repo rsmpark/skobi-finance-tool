@@ -16,8 +16,11 @@ const generateDayColumns = () => {
       header: HeaderCell,
       size: 120,
       meta: {
-        placeholder: "0",
-        type: "number",
+        inputAttr: {
+          placeholder: "0",
+          type: "number",
+          min: 0,
+        },
       },
     })
   );
@@ -28,8 +31,10 @@ export const columns = [
     header: HeaderCell,
     size: 200,
     meta: {
-      placeholder: "Name",
-      type: "text",
+      inputAttr: {
+        placeholder: "Name",
+        type: "text",
+      },
     },
   }),
   ...generateDayColumns(),

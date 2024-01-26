@@ -3,27 +3,36 @@ import { Header, Row, TableMeta } from "@tanstack/react-table";
 declare module "@tanstack/table-core" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface TableMeta<TData> {
-    updateData: (rowIndex: number, columnId: string, value: string | number) => void;
+    updateData: (
+      rowIndex: number,
+      columnId: string,
+      value: string | number | undefined
+    ) => void;
     addRow: () => void;
     removeRow: (rowIndex: number) => void;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData, TValue> {
-    placeholder: string;
-    type: string;
+    inputAttr?: InputAttr;
   }
 }
 
+export type InputAttr = {
+  placeholder?: string;
+  type?: string;
+  min?: number;
+};
+
 export type HallTipSummaryData = {
   name: string;
-  mon: number;
-  tue: number;
-  wed: number;
-  thu: number;
-  fri: number;
-  sat: number;
-  sun: number;
+  mon: number | undefined;
+  tue: number | undefined;
+  wed: number | undefined;
+  thu: number | undefined;
+  fri: number | undefined;
+  sat: number | undefined;
+  sun: number | undefined;
 };
 
 export type AddButtonProps = {
