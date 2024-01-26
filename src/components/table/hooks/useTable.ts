@@ -13,7 +13,11 @@ const useTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     meta: {
-      updateData: (rowIndex: number, columnId: string, value: string | number) => {
+      updateData: (
+        rowIndex: number,
+        columnId: string,
+        value: string | number | undefined
+      ) => {
         setData((old) =>
           old.map((row, index) => {
             if (index === rowIndex) {
@@ -29,13 +33,13 @@ const useTable = () => {
       addRow: () => {
         const newRow: HallTipSummaryData = {
           name: "",
-          mon: 0,
-          tue: 0,
-          wed: 0,
-          thu: 0,
-          fri: 0,
-          sat: 0,
-          sun: 0,
+          mon: undefined,
+          tue: undefined,
+          wed: undefined,
+          thu: undefined,
+          fri: undefined,
+          sat: undefined,
+          sun: undefined,
         };
         const setFunc = (old: HallTipSummaryData[]) => [...old, newRow];
         setData(setFunc);
