@@ -5,6 +5,7 @@ import "@assets/css/table.css";
 import MuiBox from "@mui/material/Box";
 
 import AddButton from "@components/table/buttons/AddButton";
+import CalculateButton from "@components/table/buttons/CalculateButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
@@ -45,12 +46,22 @@ export default function Table() {
     ));
   };
 
+  const Actions = () => {
+    return (
+      <MuiBox display="flex" justifyContent="space-between">
+        <AddButton onClick={() => meta?.addRow()} />
+        <CalculateButton onClick={() => meta?.addRow()} />
+      </MuiBox>
+    );
+  };
+
   return (
     <MuiBox px={5}>
       <div className="table" style={{ ...columnSizeVars }}>
         <Headers />
         <Rows />
         <AddButton onClick={() => meta?.addRow()} />
+        <Actions />
       </div>
 
       {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}

@@ -2,20 +2,20 @@ import { FC } from "react";
 
 import MuiTypography from "@mui/material/Typography";
 
-import AddIcon from "@components/table/icons/AddIcon";
+import CalculateIcon from "@components/table/icons/CalculateIcon";
 import { ActionButtonProps } from "@components/table/Table.types";
 
-const AddButton: FC<ActionButtonProps> = ({ onClick }) => {
+const CalculateButton: FC<ActionButtonProps> = ({ onClick }) => {
   return (
     <div className="tr actions-btn" onClick={onClick}>
       <span className="svg-icon svg-gray" style={{ marginRight: 4 }}>
-        <AddIcon />
+        <CalculateIcon />
       </span>
       <MuiTypography variant="body2" fontWeight={600}>
-        New
+        Calculate
       </MuiTypography>
     </div>
   );
 };
 
-export default AddButton;
+export default CalculateButton;

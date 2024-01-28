@@ -15,6 +15,7 @@ declare module "@tanstack/table-core" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData, TValue> {
     inputAttr?: InputAttr;
+    type?: string;
   }
 }
 
@@ -35,7 +36,7 @@ export type HallTipSummaryData = {
   sun: number | undefined;
 };
 
-export type AddButtonProps = {
+export type ActionButtonProps = {
   onClick: () => void;
 };
 
