@@ -60,7 +60,6 @@ export default function Table() {
       <div className="table" style={{ ...columnSizeVars }}>
         <Headers />
         <Rows />
-        <AddButton onClick={() => meta?.addRow()} />
         <Actions />
       </div>
 
