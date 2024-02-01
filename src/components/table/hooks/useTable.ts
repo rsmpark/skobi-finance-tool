@@ -3,10 +3,11 @@ import { useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
 import { HallTipSummaryData } from "@components/table/Table.types";
-import { makeData, columns } from "@util/table.util";
+import { makeData, columns, days } from "@util/table.util";
 
 const useTable = () => {
   const [data, setData] = useState(makeData(5));
+  // console.log("🚀 ~ useTable ~ data:", data);
 
   const table = useReactTable({
     data,
@@ -64,6 +65,14 @@ const useTable = () => {
         const setFilterFunc = (old: HallTipSummaryData[]) =>
           old.filter((_row: HallTipSummaryData, index: number) => index !== rowIndex);
         setData(setFilterFunc);
+      },
+      calculateData: (data: HallTipSummaryData[]) => {
+        const totalHours = data.reduce((hours, rowData: HallTipSummaryData) => {
+          const serverHours = days.reduce((accHours, currDay) => {
+            return rowData[currDay] + accHours;
+          }, 0);
+          return hours + serverHours;
+        }, []);
       },
     },
   });

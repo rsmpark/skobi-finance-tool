@@ -12,7 +12,7 @@ import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
 
 export default function Table() {
-  const { table } = useTable();
+  const { table, data } = useTable();
 
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();
@@ -53,7 +53,7 @@ export default function Table() {
         <AddButton onClick={() => meta?.addRow()} />
         <MuiBox display="flex" alignItems="center">
           <ResetButton onClick={() => meta?.resetData()} />
-          <CalculateButton onClick={() => meta?.addRow()} />
+          <CalculateButton onClick={() => meta?.calculateData(data)} />
         </MuiBox>
       </MuiBox>
     );
@@ -67,7 +67,7 @@ export default function Table() {
         <Actions />
       </div>
 
-      {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
+      <pre>{JSON.stringify(data, null, "\t")}</pre>
     </MuiBox>
   );
 }

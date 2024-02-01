@@ -11,6 +11,7 @@ declare module "@tanstack/table-core" {
     resetData: () => void;
     addRow: () => void;
     removeRow: (rowIndex: number) => void;
+    calculateData: (data: TData[]) => void;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
