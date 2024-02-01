@@ -14,17 +14,13 @@ const useTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     meta: {
-      updateData: (
-        rowIndex: number,
-        columnId: string,
-        value: string | number | undefined
-      ) => {
+      updateData: (rowIndex: number, columnId: string, value: string) => {
         setData((old) =>
           old.map((row, index) => {
             if (index === rowIndex) {
               return {
                 ...old[rowIndex],
-                [columnId]: value,
+                [columnId]: columnId === "name" ? value : +value,
               };
             }
             return row;
