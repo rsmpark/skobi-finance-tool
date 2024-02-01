@@ -30,6 +30,22 @@ const useTable = () => {
           })
         );
       },
+      resetData: () => {
+        setData((old) =>
+          old.map(() => {
+            return {
+              name: "",
+              mon: undefined,
+              tue: undefined,
+              wed: undefined,
+              thu: undefined,
+              fri: undefined,
+              sat: undefined,
+              sun: undefined,
+            };
+          })
+        );
+      },
       addRow: () => {
         const newRow: HallTipSummaryData = {
           name: "",

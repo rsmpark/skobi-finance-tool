@@ -1,4 +1,4 @@
-import MuiCalculateIcon from "@mui/icons-material/Calculate";
+import MuiCalculateIcon from "@mui/icons-material/CalculateOutlined";
 import { SvgIconProps } from "@mui/material";
 
 const CalculateIcon = (props: SvgIconProps) => {

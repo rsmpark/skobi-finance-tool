@@ -6,6 +6,7 @@ import MuiBox from "@mui/material/Box";
 
 import AddButton from "@components/table/buttons/AddButton";
 import CalculateButton from "@components/table/buttons/CalculateButton";
+import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
@@ -50,7 +51,10 @@ export default function Table() {
     return (
       <MuiBox display="flex" justifyContent="space-between">
         <AddButton onClick={() => meta?.addRow()} />
-        <CalculateButton onClick={() => meta?.addRow()} />
+        <MuiBox display="flex" alignItems="center">
+          <ResetButton onClick={() => meta?.resetData()} />
+          <CalculateButton onClick={() => meta?.addRow()} />
+        </MuiBox>
       </MuiBox>
     );
   };

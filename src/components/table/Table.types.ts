@@ -8,6 +8,7 @@ declare module "@tanstack/table-core" {
       columnId: string,
       value: string | number | undefined
     ) => void;
+    resetData: () => void;
     addRow: () => void;
     removeRow: (rowIndex: number) => void;
   }
