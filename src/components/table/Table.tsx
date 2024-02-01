@@ -52,7 +52,7 @@ export default function Table() {
       <MuiBox display="flex" justifyContent="space-between">
         <AddButton onClick={() => meta?.addRow()} />
         <MuiBox display="flex" alignItems="center">
-          <ResetButton />
+          <ResetButton onClick={() => meta?.resetData()} />
           <CalculateButton onClick={() => meta?.addRow()} />
         </MuiBox>
       </MuiBox>
