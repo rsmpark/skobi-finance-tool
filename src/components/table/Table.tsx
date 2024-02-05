@@ -5,12 +5,14 @@ import "@assets/css/table.css";
 import MuiBox from "@mui/material/Box";
 
 import AddButton from "@components/table/buttons/AddButton";
+import CalculateButton from "@components/table/buttons/CalculateButton";
+import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
 
 export default function Table() {
-  const { table } = useTable();
+  const { table, data } = useTable();
 
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();
@@ -45,15 +47,27 @@ export default function Table() {
     ));
   };
 
+  const Actions = () => {
+    return (
+      <MuiBox display="flex" justifyContent="space-between">
+        <AddButton onClick={() => meta?.addRow()} />
+        <MuiBox display="flex" alignItems="center">
+          <ResetButton onClick={() => meta?.resetData()} />
+          <CalculateButton onClick={() => meta?.calculateData(data)} />
+        </MuiBox>
+      </MuiBox>
+    );
+  };
+
   return (
     <MuiBox px={5}>
       <div className="table" style={{ ...columnSizeVars }}>
         <Headers />
         <Rows />
-        <AddButton onClick={() => meta?.addRow()} />
+        <Actions />
       </div>
 
-      {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
+      <pre>{JSON.stringify(data, null, "\t")}</pre>
     </MuiBox>
   );
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
 import { HallTipSummaryData } from "@components/table/Table.types";
-import { makeData, columns } from "@util/table.util";
+import { makeData, columns, days } from "@util/table.util";
 
 const useTable = () => {
   const [data, setData] = useState(makeData(5));
@@ -13,20 +13,32 @@ const useTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     meta: {
-      updateData: (
-        rowIndex: number,
-        columnId: string,
-        value: string | number | undefined
-      ) => {
+      updateData: (rowIndex: number, columnId: string, value: string) => {
         setData((old) =>
           old.map((row, index) => {
             if (index === rowIndex) {
               return {
                 ...old[rowIndex],
-                [columnId]: value,
+                [columnId]: columnId === "name" ? value : +value,
               };
             }
             return row;
+          })
+        );
+      },
+      resetData: () => {
+        setData((old) =>
+          old.map(() => {
+            return {
+              name: "",
+              mon: undefined,
+              tue: undefined,
+              wed: undefined,
+              thu: undefined,
+              fri: undefined,
+              sat: undefined,
+              sun: undefined,
+            };
           })
         );
       },
@@ -48,6 +60,18 @@ const useTable = () => {
         const setFilterFunc = (old: HallTipSummaryData[]) =>
           old.filter((_row: HallTipSummaryData, index: number) => index !== rowIndex);
         setData(setFilterFunc);
+      },
+      calculateData: (data: HallTipSummaryData[]) => {
+        const totalHours = data.reduce((hours, rowData: HallTipSummaryData) => {
+          const serverHours = days.reduce((accHours, currDay) => {
+            if (rowData !== undefined) {
+              return accHours;
+            } else {
+              return rowData[currDay] + accHours;
+            }
+          }, 0);
+          return hours + serverHours;
+        }, 0);
       },
     },
   });
