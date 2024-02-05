@@ -7,24 +7,19 @@ import { makeData, columns, days } from "@util/table.util";
 
 const useTable = () => {
   const [data, setData] = useState(makeData(5));
-  // console.log("🚀 ~ useTable ~ data:", data);
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     meta: {
-      updateData: (
-        rowIndex: number,
-        columnId: string,
-        value: string | number | undefined
-      ) => {
+      updateData: (rowIndex: number, columnId: string, value: string) => {
         setData((old) =>
           old.map((row, index) => {
             if (index === rowIndex) {
               return {
                 ...old[rowIndex],
-                [columnId]: value,
+                [columnId]: columnId === "name" ? value : +value,
               };
             }
             return row;
@@ -69,10 +64,14 @@ const useTable = () => {
       calculateData: (data: HallTipSummaryData[]) => {
         const totalHours = data.reduce((hours, rowData: HallTipSummaryData) => {
           const serverHours = days.reduce((accHours, currDay) => {
-            return rowData[currDay] + accHours;
+            if (rowData !== undefined) {
+              return accHours;
+            } else {
+              return rowData[currDay] + accHours;
+            }
           }, 0);
           return hours + serverHours;
-        }, []);
+        }, 0);
       },
     },
   });

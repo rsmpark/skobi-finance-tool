@@ -30,7 +30,9 @@ const Cell: FC<CellContext<HallTipSummaryData, string | number | undefined>> = (
   }, [initialValue]);
 
   const onBlur = () => {
-    table.options.meta?.updateData(row.index, column.id, value);
+    if (value !== undefined) {
+      table.options.meta?.updateData(row.index, column.id, value.toString());
+    }
   };
   return (
     <Input
