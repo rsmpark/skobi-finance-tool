@@ -15,7 +15,7 @@ const Input = styled("input")(({ theme }) => ({
   },
 }));
 
-const Cell: FC<CellContext<HallTipSummaryData, string | number | undefined>> = ({
+const Cell: FC<CellContext<HallTipSummaryData, string>> = ({
   getValue,
   row,
   column,
