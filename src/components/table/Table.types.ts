@@ -1,4 +1,6 @@
-import { Header, Row, TableMeta } from "@tanstack/react-table";
+import { FC, PropsWithChildren } from "react";
+
+import { Header, Row, Table, TableMeta } from "@tanstack/react-table";
 
 declare module "@tanstack/table-core" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -46,4 +48,18 @@ export type HeaderProps = {
 export type RowProps = {
   rowData: Row<HallTipSummaryData>;
   meta?: TableMeta<HallTipSummaryData>;
+};
+
+export type RowsProps = {
+  table: Table<HallTipSummaryData>;
+  meta: TableMeta<HallTipSummaryData>;
+};
+
+export type HeadersProps = {
+  table: Table<HallTipSummaryData>;
+};
+
+export type ActionsProps = {
+  meta: TableMeta<HallTipSummaryData>;
+  data: HallTipSummaryData[];
 };

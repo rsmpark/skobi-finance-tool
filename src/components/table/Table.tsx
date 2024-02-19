@@ -3,7 +3,6 @@ import { FC, useMemo } from "react";
 import "@assets/css/table.css";
 
 import MuiBox from "@mui/material/Box";
-import { TableMeta, Table as TableType } from "@tanstack/react-table";
 
 import AddButton from "@components/table/buttons/AddButton";
 import CalculateButton from "@components/table/buttons/CalculateButton";
@@ -11,19 +10,15 @@ import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
-import { HallTipSummaryData } from "@components/table/Table.types";
+import { ActionsProps, HeadersProps, RowsProps } from "@components/table/Table.types";
 
-const Rows: FC<{
-  table: TableType<HallTipSummaryData>;
-  meta: TableMeta<HallTipSummaryData>;
-}> = ({ table, meta }) => {
-  console.log("Rows");
+const Rows: FC<RowsProps> = ({ table, meta }) => {
   return table
     .getRowModel()
     .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
 };
 
-const Headers: FC<{ table: TableType<HallTipSummaryData> }> = ({ table }) => {
+const Headers: FC<HeadersProps> = ({ table }) => {
   return table.getHeaderGroups().map((headerGroup) => (
     <div key={headerGroup.id} className="tr">
       {headerGroup.headers.map((header) => (
@@ -37,10 +32,7 @@ const Headers: FC<{ table: TableType<HallTipSummaryData> }> = ({ table }) => {
   ));
 };
 
-const Actions: FC<{
-  meta: TableMeta<HallTipSummaryData>;
-  data: HallTipSummaryData[];
-}> = ({ meta, data }) => {
+const Actions: FC<ActionsProps> = ({ meta, data }) => {
   return (
     <MuiBox display="flex" justifyContent="space-between">
       <AddButton onClick={() => meta?.addRow()} />
@@ -52,7 +44,7 @@ const Actions: FC<{
   );
 };
 
-export default function Table() {
+const Table = () => {
   const { table, data } = useTable();
 
   const meta = table.options.meta;
@@ -81,4 +73,6 @@ export default function Table() {
       <pre>{JSON.stringify(data, null, "\t")}</pre>
     </MuiBox>
   );
-}
+};
+
+export default Table;
