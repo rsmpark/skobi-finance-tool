@@ -1,8 +1,9 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 
 import "@assets/css/table.css";
 
 import MuiBox from "@mui/material/Box";
+import { TableMeta, Table as TableType } from "@tanstack/react-table";
 
 import AddButton from "@components/table/buttons/AddButton";
 import CalculateButton from "@components/table/buttons/CalculateButton";
@@ -10,6 +11,46 @@ import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
+import { HallTipSummaryData } from "@components/table/Table.types";
+
+const Rows: FC<{
+  table: TableType<HallTipSummaryData>;
+  meta: TableMeta<HallTipSummaryData>;
+}> = ({ table, meta }) => {
+  console.log("Rows");
+  return table
+    .getRowModel()
+    .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
+};
+
+const Headers: FC<{ table: TableType<HallTipSummaryData> }> = ({ table }) => {
+  return table.getHeaderGroups().map((headerGroup) => (
+    <div key={headerGroup.id} className="tr">
+      {headerGroup.headers.map((header) => (
+        <Header
+          headerData={header}
+          key={header.id}
+          type={header.column.columnDef.meta?.type ?? "text"}
+        />
+      ))}
+    </div>
+  ));
+};
+
+const Actions: FC<{
+  meta: TableMeta<HallTipSummaryData>;
+  data: HallTipSummaryData[];
+}> = ({ meta, data }) => {
+  return (
+    <MuiBox display="flex" justifyContent="space-between">
+      <AddButton onClick={() => meta?.addRow()} />
+      <MuiBox display="flex" alignItems="center">
+        <ResetButton onClick={() => meta?.resetData()} />
+        <CalculateButton onClick={() => meta?.calculateData(data)} />
+      </MuiBox>
+    </MuiBox>
+  );
+};
 
 export default function Table() {
   const { table, data } = useTable();
@@ -27,44 +68,14 @@ export default function Table() {
     return colSizes;
   }, [headers]);
 
-  const Rows = () => {
-    return table
-      .getRowModel()
-      .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
-  };
-
-  const Headers = () => {
-    return table.getHeaderGroups().map((headerGroup) => (
-      <div key={headerGroup.id} className="tr">
-        {headerGroup.headers.map((header) => (
-          <Header
-            headerData={header}
-            key={header.id}
-            type={header.column.columnDef.meta?.type ?? "text"}
-          />
-        ))}
-      </div>
-    ));
-  };
-
-  const Actions = () => {
-    return (
-      <MuiBox display="flex" justifyContent="space-between">
-        <AddButton onClick={() => meta?.addRow()} />
-        <MuiBox display="flex" alignItems="center">
-          <ResetButton onClick={() => meta?.resetData()} />
-          <CalculateButton onClick={() => meta?.calculateData(data)} />
-        </MuiBox>
-      </MuiBox>
-    );
-  };
+  if (!table || !meta) return null;
 
   return (
     <MuiBox px={5}>
       <div className="table" style={{ ...columnSizeVars }}>
-        <Headers />
-        <Rows />
-        <Actions />
+        <Headers table={table} />
+        <Rows table={table} meta={meta} />
+        <Actions meta={meta} data={data} />
       </div>
 
       <pre>{JSON.stringify(data, null, "\t")}</pre>
