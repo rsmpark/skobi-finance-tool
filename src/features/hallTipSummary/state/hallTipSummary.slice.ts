@@ -17,7 +17,7 @@ const hallTipSummarySlice = createSlice({
         hallTipSummary: HallTipSummaryState[];
       }>
     ) => {
-      state = action.payload.hallTipSummary;
+      return action.payload.hallTipSummary;
     },
   },
 });
