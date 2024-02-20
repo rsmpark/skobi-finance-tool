@@ -15,11 +15,11 @@ export const calculateTotalTip = (
   return new BigNumber(cash).minus(owner).plus(tips).plus(giftCard).toNumber();
 };
 
-export const calculateKitchenTip = (totalTip: number) => {
+export const calculateKitchenTotalTip = (totalTip: number) => {
   return new BigNumber(floorToDigit(totalTip, 10)).multipliedBy(0.4).toNumber();
 };
 
-export const calculateHallTip = (totalTip: number, kitchenTips: number) => {
+export const calculateHallTotalTip = (totalTip: number, kitchenTips: number) => {
   return BigNumber(floorToDigit(totalTip, 10))
     .minus(ceilToDigit(kitchenTips, 10))
     .toNumber();
@@ -34,5 +34,17 @@ export const calculateTipPercentage = (
   return new BigNumber(floorToDigit(totalTip, 10))
     .dividedBy(parsedSalesReportTotal)
     .multipliedBy(100)
+    .toNumber();
+};
+
+export const calculateHallTips = (
+  hallTotalTip: number,
+  totalHours: number,
+  serverHours: number
+): number => {
+  return new BigNumber(hallTotalTip)
+    .dividedBy(totalHours)
+    .multipliedBy(serverHours)
+    .decimalPlaces(2)
     .toNumber();
 };

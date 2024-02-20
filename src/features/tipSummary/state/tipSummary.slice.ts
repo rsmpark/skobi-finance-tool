@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ReceiptInfoState } from "@features/receiptInfo/ReceiptInfo.types";
 import { parseObjectValuesToNumber } from "@util/format.util";
 import {
-  calculateHallTip,
-  calculateKitchenTip,
+  calculateHallTotalTip,
+  calculateKitchenTotalTip,
   calculateOwner,
   calculateTipPercentage,
   calculateTotalTip,
@@ -44,8 +44,8 @@ const tipSummarySlice = createSlice({
 
       state.owner = calculateOwner(salesReportTotal, netSales);
       state.totalTip = calculateTotalTip(state.owner, tips, cash, giftCard);
-      state.kitchenTip = calculateKitchenTip(state.totalTip);
-      state.hallTip = calculateHallTip(state.totalTip, state.kitchenTip);
+      state.kitchenTip = calculateKitchenTotalTip(state.totalTip);
+      state.hallTip = calculateHallTotalTip(state.totalTip, state.kitchenTip);
       state.tipPercentage = calculateTipPercentage(
         state.totalTip,
         state.receiptInfo.salesReportTotal

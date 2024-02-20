@@ -56,3 +56,7 @@ export const makeData = (count: number): HallTipSummaryData[] => {
   }
   return data;
 };
+
+export const getRowHours = (row: HallTipSummaryData) => {
+  return days.reduce((acc, day) => acc + (row[day] ?? 0), 0);
+};

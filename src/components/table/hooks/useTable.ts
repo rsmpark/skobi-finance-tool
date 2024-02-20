@@ -2,11 +2,16 @@ import { useState } from "react";
 
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
+import { useTypedSelector } from "@app/store";
 import { HallTipSummaryData } from "@components/table/Table.types";
-import { makeData, columns, days } from "@util/table.util";
+import { selectHallTip } from "@features/tipSummary/state/tipSummary.selectors";
+import { makeData, columns, getRowHours } from "@util/table.util";
+import { calculateHallTips } from "@util/tip.util";
 
 const useTable = () => {
   const [data, setData] = useState(makeData(5));
+  const hallTotalTip = useTypedSelector(selectHallTip);
+  console.log("🚀 ~ useTable ~ hallTotalTip:", hallTotalTip);
 
   const table = useReactTable({
     data,
@@ -62,16 +67,21 @@ const useTable = () => {
         setData(setFilterFunc);
       },
       calculateData: (data: HallTipSummaryData[]) => {
+        const hallDataList: { name: string; hours: number }[] = [];
+
         const totalHours = data.reduce((hours, rowData: HallTipSummaryData) => {
-          const serverHours = days.reduce((accHours, currDay) => {
-            if (rowData !== undefined) {
-              return accHours;
-            } else {
-              return rowData[currDay] + accHours;
-            }
-          }, 0);
-          return hours + serverHours;
+          const rowHours = getRowHours(rowData);
+          hallDataList.push({ name: rowData.name, hours: rowHours });
+          return hours + rowHours;
         }, 0);
+
+        const hallTips = hallDataList.map((data) => {
+          const tip = calculateHallTips(100, totalHours, data.hours);
+          return { name: data.name, tip };
+        });
+
+        console.log("🚀 ~ useTable ~ hallTime:", hallTips);
+        console.log("🚀 ~ totalHours ~ totalHours:", totalHours);
       },
     },
   });
