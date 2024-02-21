@@ -10,7 +10,12 @@ import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
-import { ActionsProps, HeadersProps, RowsProps } from "@components/table/Table.types";
+import {
+  ActionsProps,
+  HeadersProps,
+  RowsProps,
+  TableComponent,
+} from "@components/table/Table.types";
 
 const Rows: FC<RowsProps> = ({ table, meta }) => {
   return table
@@ -44,35 +49,35 @@ const Actions: FC<ActionsProps> = ({ meta, data }) => {
   );
 };
 
-const Table = () => {
-  const { table, data } = useTable();
+const Table: TableComponent = ({ style, children }) => {
+  // const meta = table.options.meta;
+  // const headers = table.getFlatHeaders();
 
-  const meta = table.options.meta;
-  const headers = table.getFlatHeaders();
+  // const columnSizeVars = useMemo(() => {
+  //   const colSizes: { [key: string]: number } = {};
+  //   for (let i = 0; i < headers.length; i++) {
+  //     const header = headers[i]!;
+  //     colSizes[`--header-${header.id}-size`] = header.getSize();
+  //     colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
+  //   }
+  //   return colSizes;
+  // }, [headers]);
 
-  const columnSizeVars = useMemo(() => {
-    const colSizes: { [key: string]: number } = {};
-    for (let i = 0; i < headers.length; i++) {
-      const header = headers[i]!;
-      colSizes[`--header-${header.id}-size`] = header.getSize();
-      colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
-    }
-    return colSizes;
-  }, [headers]);
-
-  if (!table || !meta) return null;
+  // if (!table || !meta) return null;
 
   return (
     <MuiBox px={5}>
-      <div className="table" style={{ ...columnSizeVars }}>
-        <Headers table={table} />
-        <Rows table={table} meta={meta} />
-        <Actions meta={meta} data={data} />
+      <div className="table" style={style}>
+        {children}
       </div>
 
-      <pre>{JSON.stringify(data, null, "\t")}</pre>
+      {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
     </MuiBox>
   );
 };
+
+Table.Headers = Headers;
+Table.Rows = Rows;
+Table.Actions = Actions;
 
 export default Table;
