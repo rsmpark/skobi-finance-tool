@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 
 import "@assets/css/table.css";
 
@@ -8,7 +8,6 @@ import AddButton from "@components/table/buttons/AddButton";
 import CalculateButton from "@components/table/buttons/CalculateButton";
 import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
-import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
 import {
   ActionsProps,
@@ -50,28 +49,11 @@ const Actions: FC<ActionsProps> = ({ meta, data }) => {
 };
 
 const Table: TableComponent = ({ style, children }) => {
-  // const meta = table.options.meta;
-  // const headers = table.getFlatHeaders();
-
-  // const columnSizeVars = useMemo(() => {
-  //   const colSizes: { [key: string]: number } = {};
-  //   for (let i = 0; i < headers.length; i++) {
-  //     const header = headers[i]!;
-  //     colSizes[`--header-${header.id}-size`] = header.getSize();
-  //     colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
-  //   }
-  //   return colSizes;
-  // }, [headers]);
-
-  // if (!table || !meta) return null;
-
   return (
     <MuiBox px={5}>
       <div className="table" style={style}>
         {children}
       </div>
-
-      {/* <pre>{JSON.stringify(data, null, "\t")}</pre> */}
     </MuiBox>
   );
 };
