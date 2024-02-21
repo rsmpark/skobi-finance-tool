@@ -10,7 +10,12 @@ import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import useTable from "@components/table/hooks/useTable";
 import Row from "@components/table/row/Row";
-import { ActionsProps, HeadersProps, RowsProps } from "@components/table/Table.types";
+import {
+  ActionsProps,
+  HeadersProps,
+  RowsProps,
+  TableComponent,
+} from "@components/table/Table.types";
 
 const Rows: FC<RowsProps> = ({ table, meta }) => {
   return table
@@ -44,7 +49,7 @@ const Actions: FC<ActionsProps> = ({ meta, data }) => {
   );
 };
 
-const Table = () => {
+const Table: TableComponent = () => {
   const { table, data } = useTable();
 
   const meta = table.options.meta;
@@ -74,5 +79,9 @@ const Table = () => {
     </MuiBox>
   );
 };
+
+Table.Headers = Headers;
+Table.Rows = Rows;
+Table.Actions = Actions;
 
 export default Table;

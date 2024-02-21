@@ -63,3 +63,9 @@ export type ActionsProps = {
   meta: TableMeta<HallTipSummaryData>;
   data: HallTipSummaryData[];
 };
+
+export interface TableComponent extends FC<PropsWithChildren> {
+  Headers: FC<HeadersProps>;
+  Rows: FC<RowsProps>;
+  Actions: FC<PropsWithChildren<ActionsProps>>;
+}
