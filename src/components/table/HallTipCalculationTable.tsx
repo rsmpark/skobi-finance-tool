@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import useTable from "@components/table/hooks/useTable";
+import useHallCalculationTable from "@components/table/hooks/useHallCalculationTable";
 import Table from "@components/table/Table";
 
 const HallTipCalculationTable = () => {
-  const { table, data } = useTable();
+  const { table, data } = useHallCalculationTable();
 
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();

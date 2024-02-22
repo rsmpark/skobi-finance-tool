@@ -9,7 +9,7 @@ import { selectHallTip } from "@features/tipSummary/state/tipSummary.selectors";
 import { makeData, columns, getRowHours } from "@util/table.util";
 import { calculateHallTips } from "@util/tip.util";
 
-const useTable = () => {
+const useHallTipCalculationTable = () => {
   const [data, setData] = useState(makeData(5));
   const dispatch = useAppDispatch();
   const hallTotalTip = useTypedSelector(selectHallTip);
@@ -77,6 +77,7 @@ const useTable = () => {
         }, 0);
 
         const hallTips = hallDataList.map((data) => {
+          // TODO: replace 100 with the hall total tips
           const tip = calculateHallTips(100, totalHours, data.hours);
           return { name: data.name, tip };
         });
@@ -89,4 +90,4 @@ const useTable = () => {
   return { table, data };
 };
 
-export default useTable;
+export default useHallTipCalculationTable;
