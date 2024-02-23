@@ -1,11 +1,11 @@
 import MuiBox from "@mui/material/Box";
 
-import Table from "@components/table/Table";
+import HallTipCalculationTable from "@components/table/HallTipCalculationTable";
 
 const HallTipSummary = () => {
   return (
     <MuiBox sx={{ width: "100%" }}>
-      <Table />
+      <HallTipCalculationTable />
     </MuiBox>
   );
 };

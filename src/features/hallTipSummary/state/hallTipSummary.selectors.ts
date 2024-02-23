@@ -1,3 +1,3 @@
 import { RootState } from "@store";
 
-export const selectHallTipSummary = (state: RootState) => state.tipSummary.owner;
+export const selectHallTipSummary = (state: RootState) => state.hallTipSummary;

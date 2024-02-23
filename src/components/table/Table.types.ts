@@ -25,7 +25,7 @@ export type InputAttr = {
   min?: number;
 };
 
-export type HallTipSummaryData = {
+export type HallTipCalculationData = {
   name: string;
   mon: number | undefined;
   tue: number | undefined;
@@ -36,30 +36,42 @@ export type HallTipSummaryData = {
   sun: number | undefined;
 };
 
+export type HallTipSummaryData = {
+  name: string;
+  tips: number;
+};
+
 export type ActionButtonProps = {
   onClick: () => void;
 };
 
 export type HeaderProps = {
-  headerData: Header<HallTipSummaryData, unknown>;
+  headerData: Header<HallTipCalculationData, unknown>;
   type: string;
 };
 
 export type RowProps = {
-  rowData: Row<HallTipSummaryData>;
-  meta?: TableMeta<HallTipSummaryData>;
+  rowData: Row<HallTipCalculationData>;
+  meta?: TableMeta<HallTipCalculationData>;
 };
 
 export type RowsProps = {
-  table: Table<HallTipSummaryData>;
-  meta: TableMeta<HallTipSummaryData>;
+  table: Table<HallTipCalculationData>;
+  meta: TableMeta<HallTipCalculationData>;
 };
 
 export type HeadersProps = {
-  table: Table<HallTipSummaryData>;
+  table: Table<HallTipCalculationData>;
 };
 
 export type ActionsProps = {
-  meta: TableMeta<HallTipSummaryData>;
-  data: HallTipSummaryData[];
+  meta: TableMeta<HallTipCalculationData>;
+  data: HallTipCalculationData[];
 };
+
+export interface TableComponent
+  extends FC<PropsWithChildren<{ style: React.CSSProperties | undefined }>> {
+  Headers: FC<HeadersProps>;
+  Rows: FC<RowsProps>;
+  Actions: FC<PropsWithChildren<ActionsProps>>;
+}

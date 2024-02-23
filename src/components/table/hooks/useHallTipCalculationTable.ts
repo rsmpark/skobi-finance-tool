@@ -3,13 +3,17 @@ import { useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
 import { useAppDispatch, useTypedSelector } from "@app/store";
-import { HallTipSummaryData } from "@components/table/Table.types";
+import { HallTipCalculationData } from "@components/table/Table.types";
 import { updateHallTipSummary } from "@features/hallTipSummary/state/hallTipSummary.slice";
 import { selectHallTip } from "@features/tipSummary/state/tipSummary.selectors";
-import { makeData, columns, getRowHours } from "@util/table.util";
+import {
+  makeHallCalculationTableData as makeData,
+  hallTipCalculationColumns as columns,
+  getRowHours,
+} from "@util/table.util";
 import { calculateHallTips } from "@util/tip.util";
 
-const useTable = () => {
+const useHallTipCalculationTable = () => {
   const [data, setData] = useState(makeData(5));
   const dispatch = useAppDispatch();
   const hallTotalTip = useTypedSelector(selectHallTip);
@@ -49,7 +53,7 @@ const useTable = () => {
         );
       },
       addRow: () => {
-        const newRow: HallTipSummaryData = {
+        const newRow: HallTipCalculationData = {
           name: "",
           mon: undefined,
           tue: undefined,
@@ -59,26 +63,27 @@ const useTable = () => {
           sat: undefined,
           sun: undefined,
         };
-        const setFunc = (old: HallTipSummaryData[]) => [...old, newRow];
+        const setFunc = (old: HallTipCalculationData[]) => [...old, newRow];
         setData(setFunc);
       },
       removeRow: (rowIndex: number) => {
-        const setFilterFunc = (old: HallTipSummaryData[]) =>
-          old.filter((_row: HallTipSummaryData, index: number) => index !== rowIndex);
+        const setFilterFunc = (old: HallTipCalculationData[]) =>
+          old.filter((_row: HallTipCalculationData, index: number) => index !== rowIndex);
         setData(setFilterFunc);
       },
-      calculateData: (data: HallTipSummaryData[]) => {
+      calculateData: (data: HallTipCalculationData[]) => {
         const hallDataList: { name: string; hours: number }[] = [];
 
-        const totalHours = data.reduce((hours, rowData: HallTipSummaryData) => {
+        const totalHours = data.reduce((hours, rowData: HallTipCalculationData) => {
           const rowHours = getRowHours(rowData);
           hallDataList.push({ name: rowData.name, hours: rowHours });
           return hours + rowHours;
         }, 0);
 
         const hallTips = hallDataList.map((data) => {
-          const tip = calculateHallTips(100, totalHours, data.hours);
-          return { name: data.name, tip };
+          // TODO: replace 100 with the hall total tips
+          const tips = calculateHallTips(100, totalHours, data.hours);
+          return { name: data.name, tips };
         });
 
         dispatch(updateHallTipSummary({ hallTipSummary: hallTips }));
@@ -89,4 +94,4 @@ const useTable = () => {
   return { table, data };
 };
 
-export default useTable;
+export default useHallTipCalculationTable;
