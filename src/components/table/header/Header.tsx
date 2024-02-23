@@ -5,7 +5,7 @@ import { HeaderContext, flexRender } from "@tanstack/react-table";
 
 import NotesIcon from "@components/table/icons/NotesIcon";
 import NumbersIcon from "@components/table/icons/NumbersIcon";
-import { HallTipSummaryData, HeaderProps } from "@components/table/Table.types";
+import { HallTipCalculationData, HeaderProps } from "@components/table/Table.types";
 
 const getIcon = (type: string) => {
   switch (type) {
@@ -40,7 +40,7 @@ const Header: FC<HeaderProps> = ({ headerData, type }) => {
   );
 };
 
-export const HeaderCell = (info: HeaderContext<HallTipSummaryData, string>) => (
+export const HeaderCell = <T,>(info: HeaderContext<T, string>) => (
   <MuiTypography variant="h6" fontSize={13}>
     {info.header.id.toUpperCase()}
   </MuiTypography>

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import useHallCalculationTable from "@components/table/hooks/useHallCalculationTable";
+import useHallCalculationTable from "@components/table/hooks/useHallTipCalculationTable";
 import Table from "@components/table/Table";
 
 const HallTipCalculationTable = () => {
