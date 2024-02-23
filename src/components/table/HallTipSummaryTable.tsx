@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import useHallCalculationTable from "@components/table/hooks/useHallTipCalculationTable";
+import useHallTipSummaryTable from "@components/table/hooks/useHallTipSummaryTable";
 import Table from "@components/table/Table";
 
 const HallTipCalculationTable = () => {
-  const { table, data } = useHallCalculationTable();
+  const { table, data } = useHallTipSummaryTable();
 
   const meta = table.options.meta;
   const headers = table.getFlatHeaders();
@@ -20,7 +20,6 @@ const HallTipCalculationTable = () => {
   }, [headers]);
 
   if (!table || !meta) return null;
-
   return (
     <Table style={{ ...columnSizeVars }}>
       <Table.Headers table={table} />

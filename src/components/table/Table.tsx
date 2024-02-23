@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
 import "@assets/css/table.css";
 
@@ -16,11 +16,27 @@ import {
   TableComponent,
 } from "@components/table/Table.types";
 
-const Rows: FC<RowsProps> = ({ table, meta }) => {
-  return table
-    .getRowModel()
-    .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
-};
+import RowG from "./row/RowG";
+
+// const Rows: FC<RowsProps> = ({ table, meta }) => {
+//   return table
+//     .getRowModel()
+//     .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
+// };
+
+// const Rows: <T>(props: RowsProps<T>) => JSX.Element[] = ({ table, meta }) => {
+//   return table
+//     .getRowModel()
+//     .rows.map((row) => <RowG rowData={row} key={row.id} meta={meta} />);
+// };
+
+// const Rows =
+//   <T,>(): FC<RowsProps<T>> =>
+//   ({ table, meta }) => {
+//     return table
+//       .getRowModel()
+//       .rows.map((row) => <RowG<T> rowData={row} key={row.id} meta={meta} />);
+//   };
 
 const Headers: FC<HeadersProps> = ({ table }) => {
   return table.getHeaderGroups().map((headerGroup) => (
@@ -48,7 +64,18 @@ const Actions: FC<ActionsProps> = ({ meta, data }) => {
   );
 };
 
-const Table: TableComponent = ({ style, children }) => {
+const Rows = <T,>(props: RowsProps<T>) => {
+  const { table, meta } = props;
+  return table
+    .getRowModel()
+    .rows.map((row) => <RowG<T> rowData={row} key={row.id} meta={meta} />);
+};
+
+const Table: FC<PropsWithChildren<{ style: React.CSSProperties | undefined }>> & {
+  Headers: typeof Headers;
+  Rows: typeof Rows;
+  Actions: typeof Actions;
+} = ({ children, style }) => {
   return (
     <MuiBox px={5}>
       <div className="table" style={style}>
