@@ -12,7 +12,7 @@ const useHallTipSummaryTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  return { table };
+  return { table, data: hallTipSummary };
 };
 
 export default useHallTipSummaryTable;

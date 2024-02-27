@@ -1,26 +1,12 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
 import "@assets/css/table.css";
 
 import MuiBox from "@mui/material/Box";
 
-import AddButton from "@components/table/buttons/AddButton";
-import CalculateButton from "@components/table/buttons/CalculateButton";
-import ResetButton from "@components/table/buttons/ResetButton";
 import Header from "@components/table/header/Header";
 import Row from "@components/table/row/Row";
-import {
-  ActionsProps,
-  HeadersProps,
-  RowsProps,
-  TableComponent,
-} from "@components/table/Table.types";
-
-const Rows: FC<RowsProps> = ({ table, meta }) => {
-  return table
-    .getRowModel()
-    .rows.map((row) => <Row rowData={row} key={row.id} meta={meta} />);
-};
+import { HeadersProps, RowsProps } from "@components/table/Table.types";
 
 const Headers: FC<HeadersProps> = ({ table }) => {
   return table.getHeaderGroups().map((headerGroup) => (
@@ -36,19 +22,26 @@ const Headers: FC<HeadersProps> = ({ table }) => {
   ));
 };
 
-const Actions: FC<ActionsProps> = ({ meta, data }) => {
+const Rows = <T,>(props: RowsProps<T>) => {
+  const { table, meta } = props;
+  return table
+    .getRowModel()
+    .rows.map((row) => <Row<T> rowData={row} key={row.id} meta={meta} />);
+};
+
+const Actions: FC<PropsWithChildren> = ({ children }) => {
   return (
     <MuiBox display="flex" justifyContent="space-between">
-      <AddButton onClick={() => meta?.addRow()} />
-      <MuiBox display="flex" alignItems="center">
-        <ResetButton onClick={() => meta?.resetData()} />
-        <CalculateButton onClick={() => meta?.calculateData(data)} />
-      </MuiBox>
+      {children}
     </MuiBox>
   );
 };
 
-const Table: TableComponent = ({ style, children }) => {
+const Table: FC<PropsWithChildren<{ style: React.CSSProperties | undefined }>> & {
+  Headers: typeof Headers;
+  Rows: typeof Rows;
+  Actions: typeof Actions;
+} = ({ children, style }) => {
   return (
     <MuiBox px={5}>
       <div className="table" style={style}>

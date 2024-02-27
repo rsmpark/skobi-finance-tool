@@ -55,23 +55,28 @@ export type RowProps = {
   meta?: TableMeta<HallTipCalculationData>;
 };
 
-export type RowsProps = {
-  table: Table<HallTipCalculationData>;
-  meta: TableMeta<HallTipCalculationData>;
+export type RowGProps<T = unknown> = {
+  rowData: Row<T>;
+  meta?: TableMeta<T>;
+};
+
+// export type RowsProps = {
+//   table: Table<HallTipCalculationData>;
+//   meta: TableMeta<HallTipCalculationData>;
+// };
+
+export type RowsProps<T = unknown> = {
+  table: Table<T>;
+  meta: TableMeta<T>;
 };
 
 export type HeadersProps = {
   table: Table<HallTipCalculationData>;
 };
 
-export type ActionsProps = {
-  meta: TableMeta<HallTipCalculationData>;
-  data: HallTipCalculationData[];
-};
-
-export interface TableComponent
-  extends FC<PropsWithChildren<{ style: React.CSSProperties | undefined }>> {
+export interface TableComponent<T>
+  extends PropsWithChildren<{ style: React.CSSProperties | undefined }> {
   Headers: FC<HeadersProps>;
-  Rows: FC<RowsProps>;
-  Actions: FC<PropsWithChildren<ActionsProps>>;
+  Rows: FC<RowsProps<T>>;
+  Actions: FC<PropsWithChildren>;
 }
