@@ -1,12 +1,12 @@
-import { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
 import { flexRender } from "@tanstack/react-table";
 
 import DeleteButton from "@components/table/buttons/DeleteButton";
-import { RowProps } from "@components/table/Table.types";
+import { RowGProps } from "@components/table/Table.types";
 
-const Row: FC<RowProps> = ({ rowData, meta }) => {
+const Row: <T>(props: RowGProps<T>) => React.ReactElement = ({ rowData, meta }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const styles = useSpring({

@@ -74,14 +74,9 @@ export type HeadersProps = {
   table: Table<HallTipCalculationData>;
 };
 
-export type ActionsProps = {
-  meta: TableMeta<HallTipCalculationData>;
-  data: HallTipCalculationData[];
-};
-
 export interface TableComponent<T>
   extends PropsWithChildren<{ style: React.CSSProperties | undefined }> {
   Headers: FC<HeadersProps>;
   Rows: FC<RowsProps<T>>;
-  Actions: FC<PropsWithChildren<ActionsProps>>;
+  Actions: FC<PropsWithChildren>;
 }
