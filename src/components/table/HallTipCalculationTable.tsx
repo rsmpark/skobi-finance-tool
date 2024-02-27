@@ -30,7 +30,7 @@ const HallTipCalculationTable = () => {
     <Table style={{ ...columnSizeVars }}>
       <Table.Headers table={table} />
       <Table.Rows table={table} meta={meta} />
-      <Table.Actions meta={meta} data={data}>
+      <Table.Actions>
         <AddButton onClick={() => meta?.addRow()} />
         <MuiBox display="flex" alignItems="center">
           <ResetButton onClick={() => meta?.resetData()} />
