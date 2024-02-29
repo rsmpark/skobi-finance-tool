@@ -4,9 +4,9 @@ import { animated, useSpring } from "@react-spring/web";
 import { flexRender } from "@tanstack/react-table";
 
 import DeleteButton from "@components/table/buttons/DeleteButton";
-import { RowGProps } from "@components/table/Table.types";
+import { RowProps } from "@components/table/Table.types";
 
-const Row: <T>(props: RowGProps<T>) => React.ReactElement = ({ rowData, meta }) => {
+const Row: <T>(props: RowProps<T>) => React.ReactElement = ({ rowData, meta }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const styles = useSpring({

@@ -45,38 +45,28 @@ export type ActionButtonProps = {
   onClick: () => void;
 };
 
-export type HeaderProps = {
-  headerData: Header<HallTipCalculationData, unknown>;
+export type HeaderProps<T = unknown> = {
+  headerData: Header<T, unknown>;
   type: string;
 };
 
-export type RowProps = {
-  rowData: Row<HallTipCalculationData>;
-  meta?: TableMeta<HallTipCalculationData>;
-};
-
-export type RowGProps<T = unknown> = {
+export type RowProps<T = unknown> = {
   rowData: Row<T>;
   meta?: TableMeta<T>;
 };
 
-// export type RowsProps = {
-//   table: Table<HallTipCalculationData>;
-//   meta: TableMeta<HallTipCalculationData>;
-// };
-
 export type RowsProps<T = unknown> = {
   table: Table<T>;
-  meta: TableMeta<T>;
+  meta?: TableMeta<T>;
 };
 
-export type HeadersProps = {
-  table: Table<HallTipCalculationData>;
+export type HeadersProps<T = unknown> = {
+  table: Table<T>;
 };
 
 export interface TableComponent<T>
   extends PropsWithChildren<{ style: React.CSSProperties | undefined }> {
-  Headers: FC<HeadersProps>;
+  Headers: FC<HeadersProps<T>>;
   Rows: FC<RowsProps<T>>;
   Actions: FC<PropsWithChildren>;
 }

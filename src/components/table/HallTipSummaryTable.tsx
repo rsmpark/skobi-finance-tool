@@ -3,10 +3,9 @@ import { useMemo } from "react";
 import useHallTipSummaryTable from "@components/table/hooks/useHallTipSummaryTable";
 import Table from "@components/table/Table";
 
-const HallTipCalculationTable = () => {
+const HallTipSummaryTable = () => {
   const { table, data } = useHallTipSummaryTable();
 
-  const meta = table.options.meta;
   const headers = table.getFlatHeaders();
 
   const columnSizeVars = useMemo(() => {
@@ -19,14 +18,14 @@ const HallTipCalculationTable = () => {
     return colSizes;
   }, [headers]);
 
-  if (!table || !meta) return null;
+  if (!table) return null;
+
   return (
     <Table style={{ ...columnSizeVars }}>
       <Table.Headers table={table} />
-      <Table.Rows table={table} meta={meta} />
-      <Table.Actions meta={meta} data={data} />
+      <Table.Rows table={table} />
     </Table>
   );
 };
 
-export default HallTipCalculationTable;
+export default HallTipSummaryTable;

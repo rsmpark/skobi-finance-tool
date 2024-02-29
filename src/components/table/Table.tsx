@@ -8,7 +8,8 @@ import Header from "@components/table/header/Header";
 import Row from "@components/table/row/Row";
 import { HeadersProps, RowsProps } from "@components/table/Table.types";
 
-const Headers: FC<HeadersProps> = ({ table }) => {
+const Headers = <T,>(props: HeadersProps<T>) => {
+  const { table } = props;
   return table.getHeaderGroups().map((headerGroup) => (
     <div key={headerGroup.id} className="tr">
       {headerGroup.headers.map((header) => (

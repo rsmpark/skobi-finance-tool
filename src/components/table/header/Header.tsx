@@ -1,11 +1,9 @@
-import { FC } from "react";
-
 import MuiTypography from "@mui/material/Typography";
 import { HeaderContext, flexRender } from "@tanstack/react-table";
 
 import NotesIcon from "@components/table/icons/NotesIcon";
 import NumbersIcon from "@components/table/icons/NumbersIcon";
-import { HallTipCalculationData, HeaderProps } from "@components/table/Table.types";
+import { HeaderProps } from "@components/table/Table.types";
 
 const getIcon = (type: string) => {
   switch (type) {
@@ -18,7 +16,8 @@ const getIcon = (type: string) => {
   }
 };
 
-const Header: FC<HeaderProps> = ({ headerData, type }) => {
+const Header = <T,>(props: HeaderProps<T>) => {
+  const { headerData, type } = props;
   const HeaderIcon = getIcon(type);
   return (
     <div
@@ -40,6 +39,7 @@ const Header: FC<HeaderProps> = ({ headerData, type }) => {
   );
 };
 
+// TODO: refactor into own file
 export const HeaderCell = <T,>(info: HeaderContext<T, string>) => (
   <MuiTypography variant="h6" fontSize={13}>
     {info.header.id.toUpperCase()}
