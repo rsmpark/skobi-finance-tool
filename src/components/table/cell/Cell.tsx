@@ -3,7 +3,10 @@ import { FC, useEffect, useState } from "react";
 import { styled } from "@mui/material";
 import { CellContext } from "@tanstack/react-table";
 
-import { HallTipSummaryData } from "@components/table/Table.types";
+import {
+  HallTipCalculationData,
+  HallTipSummaryData,
+} from "@components/table/Table.types";
 
 const Input = styled("input")(({ theme }) => ({
   ...theme.typography,
@@ -15,12 +18,9 @@ const Input = styled("input")(({ theme }) => ({
   },
 }));
 
-const Cell: FC<CellContext<HallTipSummaryData, string | number | undefined>> = ({
-  getValue,
-  row,
-  column,
-  table,
-}) => {
+const Cell: FC<
+  CellContext<HallTipSummaryData | HallTipCalculationData, string | number | undefined>
+> = ({ getValue, row, column, table }) => {
   const initialValue = getValue();
   const [value, setValue] = useState(initialValue);
   const inputAttr = column.columnDef.meta?.inputAttr;

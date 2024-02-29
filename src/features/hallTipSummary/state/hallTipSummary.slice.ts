@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface HallTipSummaryState {
   name: string;
-  tip: number;
+  tips: number;
 }
 
 const initialState: HallTipSummaryState[] = [];
@@ -17,7 +17,7 @@ const hallTipSummarySlice = createSlice({
         hallTipSummary: HallTipSummaryState[];
       }>
     ) => {
-      state = action.payload.hallTipSummary;
+      return action.payload.hallTipSummary;
     },
   },
 });
