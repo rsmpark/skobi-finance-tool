@@ -65,7 +65,7 @@ export const hallTipSummaryColumns = [
     meta: {
       inputAttr: {
         placeholder: "Tips",
-        type: "text",
+        type: "number",
       },
     },
   }),

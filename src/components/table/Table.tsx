@@ -16,7 +16,7 @@ const Headers = <T,>(props: HeadersProps<T>) => {
         <Header
           headerData={header}
           key={header.id}
-          type={header.column.columnDef.meta?.type ?? "text"}
+          type={header.column.columnDef.meta?.inputAttr?.type ?? "text"}
         />
       ))}
     </div>
